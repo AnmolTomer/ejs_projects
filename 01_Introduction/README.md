@@ -37,15 +37,15 @@
 
 ## Projects
 
-- Basic Webserver
-- PC Repair Website
-- Todo app using MongoDB and Mongo Driver
-- SportsBlog using Mongoose and MongoDB
-- User Login App with Passport
-- Chat App using Socket.io
-- MEAN Stack Application - ClientKeeper App
-- Job Board with MEAN.js generator
-- MovieBase Kraken App - Extra layer over Express to build better MVC design pattern adhering applications
-- Instagram Clone and working with Instagram API
-- Bizlist - A business listing application using CouchDB
-- Redis Storefinder - Storefinder using Redis and Google Geocode
+💡 Basic Webserver<br />
+💡 PC Repair Website<br />
+💡 Todo app using MongoDB and Mongo Driver<br />
+💡 SportsBlog using Mongoose and MongoDB<br />
+💡 User Login App with Passport<br />
+💡 Chat App using Socket.io<br />
+💡 MEAN Stack Application - ClientKeeper App<br />
+💡 Job Board with MEAN.js generator<br />
+💡 MovieBase Kraken App - Extra layer over Express to build better MVC design pattern adhering applications<br />
+💡 Instagram Clone and working with Instagram API<br />
+💡 Bizlist - A business listing application using CouchDB<br />
+💡 Redis Storefinder - Storefinder using Redis and Google Geocode<br />
