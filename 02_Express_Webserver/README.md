@@ -116,3 +116,9 @@ Server started on port 3000...
 - To serve or allow users to download pdf files, create a folder called downloads in `ejs_webserver` directory and we place in it an empty `pdf.pdf` file. Next, we create a route for user in app.js. Ref: `app.get('/download')` in `app.js`.
 - Post request to get user entered data. We make a form in `index.html`. And `app.post('/subscribe')` in `app.js`.
 - As we do not have a database, we will grab the name and the email field and to do that we have to install a module called `body-parser`, so we run `npm install body-parser --save`.
+
+## Finished App:
+
+![](https://i.imgur.com/VYFpjUN.png)
+
+![](https://i.imgur.com/rwbkVAl.png)
