@@ -15,7 +15,7 @@
 ## Projects
 
 💡 [Basic Webserver](https://github.com/AnmolTomer/ejs_projects/tree/master/02_Express_Webserver)<br />
-💡 PC Repair Website<br />
+💡 [PC Repair Website](https://github.com/AnmolTomer/ejs_projects/tree/master/03_PC_Repair_Site)<br />
 💡 Todo app using MongoDB and Mongo Driver<br />
 💡 SportsBlog using Mongoose and MongoDB<br />
 💡 User Login App with Passport<br />
