@@ -1,0 +1,12 @@
+extends layout
+    
+block content
+
+    h1 #{title}
+    
+    each service in services
+        div.well
+            h3 #{service.name}
+            p #{service.description}
+            p
+                | Price Range: #{service.price_range}
