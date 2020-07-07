@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css',integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu",
+    crossorigin="anonymous")
+  body
+    nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') PC Repair
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li(class=title=='Home' ? 'active' : undefined) 
+              a(href='/') Home
+            li(class=title=='About Us' ? 'active' : undefined)
+              a(href='/about') About Us
+            li(class=title=='Services' ? 'active' : undefined)
+              a(href='/services') Services
+            li(class=title=='Contact' ? 'active' : undefined)
+              a(href='/contact') Contact
+    .container
+      block content
+
+    hr.alert-light
+    footer
+      p(align="Center")  PC Repair&copy; 2020
