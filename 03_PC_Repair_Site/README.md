@@ -1,5 +1,7 @@
 # 03. Build a PC Repair Website
 
+![](demo.gif)
+
 ## 03_01 Pug and Template Engines
 
 - In this project we use Express Generator, which will generate an express boilerplate application. We will also work with **Pug/Jade** which is a Node.js Template Engine.
