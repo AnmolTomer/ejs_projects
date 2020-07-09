@@ -1,0 +1,14 @@
+<%- include ("../views/partials/header") %>
+<form method="POST" action="/todo/edit/<%= todo._id %>">
+    <div>
+        <label>Task Title</label>
+        <input type="text" name="title" required value="<%= todo.text %>">
+    </div>
+    <div>
+        <label>Task Info</label>
+        <textarea name="info" value="<%= todo.body %>" required> </textarea>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<%- include ("../views/partials/footer") %>

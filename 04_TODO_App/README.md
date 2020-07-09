@@ -122,5 +122,80 @@ HELLO FROM INDEX
 
 >## MongoDB Driver
 
+- Ref: **app.js**
+
 - Create variable called MongoClient in app.js as shown in `04_02`.
 
+- Connect the DB with frontend and log the db entries into the console, inside the app.get route for home page in following manner:
+
+```js
+app.get('/', (req, res, next) => {
+    Todos.find({}).toArray((err, todos) => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(todos);
+        res.render('index', {
+            todos: todos
+        });
+    });
+});
+```
+
+- Visit the EJs docs for more info: [link](https://ejs.co/#docs)
+
+## 04_06 Add Delete Todos
+
+- Go to index.ejs to create a form so that we can add data to MongoDB.
+- If you restarted your system and you are getting errors while running mongo shell, do the following:
+  - Delete mongo.log or rename it, in my case it was at `/home/cosmic/software/mongodb/log/mongo.log`, I renamed it to `mongo2.log`.
+  - Run the mongod as sudo by passing directory and log file paths in following manner: `sudo mongod --directoryperdb --dbpath ~/software/mongodb/data/db --logpath ~/software/mongodb/log/mongo.log`
+  - Create new db, as in my case old entries were deleted.
+
+```bash
+use todoapp
+db.createCollection('todos')
+db.todos.insert({text:'My Todo One',body:'This is first todo.'})
+db.todos.insert({text:'My Todo Two',body:'This is second todo.'})
+```
+
+- Try running the node server of todo app using nodemon and see if you are able to see entries of DB in the console.
+- Screenshot of entries being shown on console and browser:
+
+![](https://i.imgur.com/dPncBCv.png)
+
+![](https://i.imgur.com/2Bkyz8h.png)
+
+- Create a form in index.ejs and since forms have a post request, add it in app.js.
+- Think of what to do when you submit data from form, we want to user body-parser module to get parameters body.form.title and body.form.info and add those as an object into the database.
+- We will also have to delete our todos. And this will be different to just getting something from a post request path and adding as an object to DB.
+- We will have to accept a deleting request and we cannot do a delete request through a form like we did for add task.
+- We will use jQuery and AJAX to make a delete request.
+- We will have to go to index.ejs and add a delete link next to each todo. Inside the public folder, create a folder called `js` and create `main.js` in there. Add this file in the footer partials.
+- We will use jQuery and we will also be using Bootstrap. To install bootstrap we will be using `Bower`, which is a frontend or client-side package manager. When we install bootstrap with bower it also installs jQuery as jQuery is a dependency.
+- First we install bower and then using bower we install bootstrap.
+- We can create a file called `.bowerrc` to specify what folder to use for bower components. Ref: `.bowerrc`
+
+```bash
+npm install -g bower
+bower install bootstrap
+bower install jquery
+```
+
+- Go back to footer.ejs and include jquery.
+- Go to package.json and add static script `"start": "node app"`, this would allow you to run the server by typing `npm start`, because sometimes it would be node app, node server,node main etc. etc. so we define it inside the package.json itself, so that it would run on npm start irrespective of what our main entry-point file's name is.
+
+- Add the delete route after taking in the id of the object to be removed.
+
+
+## Update Todos
+
+- Each task needs to have Edit and Delete option, go to index.ejs and edit it. Add the following inside the list item in index.ejs
+
+```html
+<a href="/todo/edit/<%= todo._id %>">✏️Edit</a>
+```
+
+- Now we need route for `/todo/edit/todo._id`, write that in app.js and after that we need to define edit page and we do so by writing edit.ejs file.
+
+- After that we create the edit view.

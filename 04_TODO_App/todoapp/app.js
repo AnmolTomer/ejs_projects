@@ -9,6 +9,7 @@ const app = express();
 const assert = require('assert')
 
 const MongoClient = require('mongodb', ).MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 const url = 'mongodb://localhost:27017';
 const dbName = 'todoapp'
 
@@ -43,16 +44,6 @@ MongoClient.connect(url, {
 })
 
 
-
-
-// const db = client.db(dbName); // stored inside db
-
-
-// console.log(Todos)
-// const Todos = client.db(dbName).collection("todos"); // called db.collection("todos")
-// console.log(Todos);
-
-
 app.get('/', (req, res, next) => {
     Todos.find({}).toArray((err, todos) => {
         if (err) {
@@ -61,6 +52,54 @@ app.get('/', (req, res, next) => {
         console.log(todos);
         res.render('index', {
             todos: todos
+        });
+    });
+});
+
+app.post('/todo/add', (req, res, next) => {
+    // console.log('submitted') // To test if route is working
+    // Create todo object
+    const todo = {
+        text: req.body.title,
+        body: req.body.info,
+    }
+
+    // Insert todo object ot the database
+    Todos.insertOne(todo, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('Todo added: ' + todo)
+        // redirect after submission to the page
+        res.redirect('/')
+    })
+
+});
+
+app.delete('/todo/delete/:id', (req, res, next) => {
+    const query = {
+        _id: ObjectID(req.params.id)
+    }
+    Todos.deleteOne(query, (err, response) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('Todo Removed')
+        res.send(200);
+    })
+});
+
+app.get('/todo/edit/:id', (req, res, next) => {
+    const query = {
+        _id: ObjectID(req.params.id)
+    }
+    Todos.find(query).next((err, todo) => {
+        if (err) {
+            return console.log(err);
+        }
+
+        res.render('edit', {
+            todo: todo
         });
     });
 });
