@@ -1,5 +1,9 @@
 # 04 To-Do App using MongoDB
 
+>## Demo
+
+![](demo.gif)
+
 ## 04_01 Project Intro
 
 - From this project onwards, we will start moving away from basic introductory stuff and move towards building real world apps. Express is known for creating great CRUD i.e. (Create,Read, Update, Delete operation) apps.
