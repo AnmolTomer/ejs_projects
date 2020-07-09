@@ -49,7 +49,10 @@ app.get('/', (req, res, next) => {
         if (err) {
             return console.log(err);
         }
+        console.log('- - - - - - - - - - - - - - - - - - - \n')
+        console.log('All DB Items:\n')
         console.log(todos);
+        console.log('- - - - - - - - - - - - - - - - - - - \n')
         res.render('index', {
             todos: todos
         });
@@ -64,12 +67,14 @@ app.post('/todo/add', (req, res, next) => {
         body: req.body.info,
     }
 
-    // Insert todo object ot the database
+    // Insert todo object to the database
     Todos.insertOne(todo, (err, result) => {
         if (err) {
             console.log(err)
         }
-        console.log('Todo added: ' + todo)
+
+        console.log('Todo Added:\n\nText: ' + todo.text + '\nBody: ' + todo.body)
+        console.log('- - - - - - - - - - - - - - - - - - - \n')
         // redirect after submission to the page
         res.redirect('/')
     })
@@ -85,7 +90,7 @@ app.delete('/todo/delete/:id', (req, res, next) => {
             console.log(err)
         }
         console.log('Todo Removed')
-        res.send(200);
+        res.sendStatus(200);
     })
 });
 
@@ -102,4 +107,28 @@ app.get('/todo/edit/:id', (req, res, next) => {
             todo: todo
         });
     });
+});
+
+app.post('/todo/edit/:id', (req, res, next) => {
+    const query = {
+        _id: ObjectID(req.params.id)
+    }
+    // Get the stuff from a form and store in the object called todo.
+    const todo = {
+        text: req.body.title,
+        body: req.body.info,
+    }
+
+    // Update query todo object of the database, by passing the object todo which gets stuff from the form.
+    Todos.updateOne(query, {
+        $set: todo
+    }, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('Todo Updated:\n\nText: ' + todo.text + '\nBody: ' + todo.body)
+        // redirect after submission to the page
+        res.redirect('/')
+    })
+
 });

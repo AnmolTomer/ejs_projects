@@ -198,4 +198,11 @@ bower install jquery
 
 - Now we need route for `/todo/edit/todo._id`, write that in app.js and after that we need to define edit page and we do so by writing edit.ejs file.
 
-- After that we create the edit view.
+- After that we create the edit view. And Edit function on frontend should be now capable to fetch entries from DB so that those can be edited. Next on Edit page we will also put in a cancel button in case user wants to go back without editing.
+- Now when we submit the form present on `Edit` page, it will go to `/todo/edit/<% todo._id %>` and that will be a post request, so we need to handle that, that's why we go to app.js to specify routes for form submission from edit page.
+
+## 04_07 Bootstrap UI
+
+- Next we implement bootstrap. Go to views >> partials >> header.ejs. After you are done editing the header.ejs, we move to index.ejs to align and give some style to tasks list. We will use grid system, to put form on left and tasks on right side. After you have added bootstrap classes to elements of index.ejs, next we move to edit page `edit.ejs` and give style to the form there.
+
+- That's it. You have a fully functional todo application running on MongoDB.
