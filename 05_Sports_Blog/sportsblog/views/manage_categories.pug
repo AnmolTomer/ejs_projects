@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .container
+        h1 #{title }
+        table(class='table table-striped')
+            tr
+                th Category Title
+                th
+            each category,i in categories
+                tr
+                    td #{category.title}
+
+                    td
+                        //- a(class="btn btn-primary" href='/manage/categories/edit/'+category._id)
+                        <a href="/manage/categories/edit/#{category._id}" class="btn btn-primary">Edit</a>
+                    
