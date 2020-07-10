@@ -1,18 +1,18 @@
 extends layout
 
 block content
-    h1 #{title }
+    .container 
+        h1 #{title }
+        form(method="post", action="/categories/add")
+            .form-group
+                label Title:
+                input.form-control(name='title',type='text')
 
-    form(method="post", action="/categories/add")
-        .form-group
-            label Title:
-            input(name='title',type='text')
-
-        .form-group
-            label Description:
-            textarea(name='description')
-        input(type="submit",name="submit", value="Save")
-        a(href='/manage/categories') Back
+            .form-group
+                label Description:
+                textarea.form-control(name='description')
+            input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
+            a.btn.btn-danger(href='/manage/categories') Back⏪️
 
     //- Create route in categories.js for /categories/add
 

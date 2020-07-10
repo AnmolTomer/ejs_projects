@@ -75,4 +75,18 @@ db.categories.find()
 - Next we define a model function called addCategory that will take an object and add it to categories collection. Define it in the `models/categories.js`. When this is done, go to categories.js and call addCategory on the object.
 - Next we try to do manage categories and it will be table of different categories, for that we go to manage.js inside routes dir. Bring in Category model in manage.js and inside get route of /categories render the manage_categories template after passing categories to the manage_categories page.
 - After that go to views/manage_categories.pug and similar to categories.pug we take the categories received from manage/categories.js and iterate over it and print a list.
-- We set bootstrap stuff up next.
+- We set bootstrap stuff up next. Go to manage_categories.pug, categories.pug and add_category.pug to add container and use bootstrap classes to make the forms look good.
+- Next on going to /categories and clicking any category we might want to edit that particular category. We do that next.
+
+## 05_07 Edit and Delete Categories
+
+- So far we can read all of our categories on blog inside /manage/categories area, andd categories on /manage/categories/add route. Now we want to edit our categories.
+- We made a button for edit on `/manage/categories/edit` previously, next we add a form to edit category on route `/manage/categories/edit/:_id`. Go to manage.js and work on that route.
+- Before doing so go to `models/category.js` create a function called getSingleCategory by id. After doing that, back to manage.js and in there use the Category model imported at the top of the manage.js file to get ID and pass it to the function `getCategoryById` which we made in `models/category.js`
+- We pass the category object to edit_category.pug so let's go to pug file and make sure that form is present similar to add_category on the page.
+- Now we want to save the Category info that we edit, for that go to routes/categories.js, use the Category object to call the updateCategory function defined in `models/category.js` and with that we can update contents of a category.
+- Last thing we want to do with categories is being able to delete them, so inside the `/manage/categories/edit/:id` page we can put up a `Delete` button. Go to `edit_category.pug` to do that.
+
+- Create a folder js inside public and main.js inside js folder. Include the script in layout.pug. Also include the jQuery.js. Go to main.js and there we have ajax request of type DELETE.
+- Go to categories.js and write code for delete request using router.delete() and create a function removeCategory in category.js which will be called inside router.delete().
+- With this we have full CRUD functionality for categories. Next we add a button to add category on `/manage/categories route`. Go to `manage_categories.pug` to do that.

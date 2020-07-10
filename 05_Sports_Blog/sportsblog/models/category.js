@@ -27,3 +27,21 @@ module.exports.getCategories = function (callback, limit) {
 module.exports.addCategory = function (category, callback) {
     Category.create(category, callback)
 }
+
+// Get Single Category by its ID
+
+module.exports.getCategoryById = function (id, callback) { // We can directly do callById outside as well, but we are sticking to encapsulating stuff
+    Category.findById(id, callback) // Mongoose method
+}
+
+
+// Update Category
+module.exports.updateCategory = function (query, update, options, callback) {
+    Category.findOneAndUpdate(query, update, options, callback)
+}
+
+// Remove category
+
+module.exports.removeCategory = function (query, callback) {
+    Category.deleteOne(query, callback)
+}

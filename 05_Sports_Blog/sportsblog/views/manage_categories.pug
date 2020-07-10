@@ -2,7 +2,13 @@ extends layout
 
 block content
     .container
-        h1 #{title }
+        .row
+            .col-md-9
+                h1 #{title }
+            .col-md-3
+                a(class="btn btn-success create-btn",href='/manage/categories/add') Add Category ➕️
+                //- a(class="btn btn-success create-btn",href='./add') Add Category ➕️
+        
         table(class='table table-striped')
             tr
                 th Category Title
@@ -12,6 +18,7 @@ block content
                     td #{category.title}
 
                     td
-                        //- a(class="btn btn-primary" href='/manage/categories/edit/'+category._id)
-                        <a href="/manage/categories/edit/#{category._id}" class="btn btn-primary">Edit</a>
-                    
+                        a(class="btn btn-primary" href='/manage/categories/edit/'+category._id) Edit✏️
+//- In the above line be sure to keep a space after a(content) Name, if you don't there will be a long error message with no info about whitespace.
+//- If you don't want to use the method above as most IDEs remove that whitespace below is HTML implementation of the same which would work fine as well. Just uncomment and use.
+                        //- <a href="/manage/categories/edit/#{category._id}" class="btn btn-primary">Edit</a>
