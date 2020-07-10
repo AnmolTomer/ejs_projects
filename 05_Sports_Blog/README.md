@@ -98,3 +98,5 @@ db.categories.find()
 - Now we start with create/add article page and route is `/manage/articles/add`, to do this go to manage.js `/articles/add` route is where we will add the functionality to add articles.
 - On add articles page, we would have to select the category of the article which would come from categories collections of the DB. We make use of `getCategories` function defined in `category.js` to get those.
 - Copy contents of add_category.pug into add_article.pug and edit it wherever needed as the basic body of form remains the same. Refer schema of article.js in models to see what all things you need to get from user.
+- We are making a POST req to `/articles/add`, go to routes/articles.js and create a post request for `/add`. Similar to `router.post` of categories.
+- Now that we can add articles, we move towards fetching articles from articles collection and showing them on `/manage/articles` route.
