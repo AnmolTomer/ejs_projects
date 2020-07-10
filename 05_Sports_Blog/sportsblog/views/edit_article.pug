@@ -6,11 +6,11 @@ block content
         form(method="post", action='/articles/edit/'+article._id)
             .form-group
                 label Title:
-                input.form-control(name='title',type='text', value=article.title)
+                input.form-control(name='title',type='text', value=article.title,required)
 
             .form-group
                 label Subtitle:
-                input.form-control(name='subtitle',type='text', value=article.subtitle)
+                input.form-control(name='subtitle',type='text', value=article.subtitle,required)
                 //- textarea.form-control(name='description')
                 //- Next we will have Category of article which we get from categories object, so we can essentially loop through those.
             .form-group
@@ -23,10 +23,10 @@ block content
                             option(value=category._id) #{category.title}
             .form-group
                 label Author:
-                input.form-control(name='author', type='text',value=article.author)
+                input.form-control(name='author', type='text',value=article.author,required)
             .form-group
                 label Body
-                textarea.form-control(name='body',rows=8) #{article.body}
+                textarea.form-control(name='body',rows=8,required) #{article.body}
                         
                     
             input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")

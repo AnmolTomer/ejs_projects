@@ -133,3 +133,13 @@ db.categories.find()
 - Now that we have edit article page with all the contents from DB being rendered now we need to define POST route for the form as in action we have the route `action='/articles/edit/'+article._id` in edit_article.pug. Go to routes/articles.js and handle post request from edit_article.pug form on Submission. Similar to `articles.js` /add route POST request but this will be on /edit/:id inside articles.js.
 - Next inside manage/articles table we want to put author and date. We use moment for that.
 - To enable delete option on route /articles/edit/:id we do AJAX request similar to delete category. Go to public/js/main.js edit it out and make a Delete button in edit_article.pug.
+
+## 05_09 Express Validator
+
+- Useful for form validation and express messages. In app.js we have included express-validator and middleware setup is also done. Deprecated, not used.
+- Poor unorganized documentation and issues to quickly set up.
+
+## 05_10 Messages
+
+- To show a message we can see that in the route /manage/categories when we add something and do a res.redirect, before that we can send a flash message.  We can do so by entering the following `req.flash('Success', 'Added To Category')` after that we go to app.js and setup connect-flash and we use a variable globally called messages which we may use in our templates to show messages. So we should add the message in `/manage/categories/` route as that's where we will be redirected once we submit the request successfully. Make some changes to style.css and messages will work on your page.
+- On adding articles also we want the same effect, so we go to articles.js and before the redirect request we do the same as we did for categories.

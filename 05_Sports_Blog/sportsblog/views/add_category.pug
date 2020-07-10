@@ -6,11 +6,13 @@ block content
         form(method="post", action="/categories/add")
             .form-group
                 label Title:
-                input.form-control(name='title',type='text')
+                input.form-control(name='title',type='text',required)
+                //- input.form-control(name='title',type='text',required)
 
             .form-group
                 label Description:
                 textarea.form-control(name='description')
+                //- textarea.form-control(name='description')
             input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
             a.btn.btn-danger(href='/manage/categories') Back⏪️
 

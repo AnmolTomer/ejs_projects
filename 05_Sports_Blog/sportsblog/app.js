@@ -2,9 +2,13 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const session = require('express-session')
-const expressValidator = require('express-validator')
 const mongoose = require('mongoose')
+// const expressValidator = require('express-validator')
 
+const {
+    check,
+    validationResult
+} = require('express-validator')
 
 // Mongoose connect
 
@@ -41,66 +45,26 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 
+// Express session
+
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true
+}))
+
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 // See docs for express messages and validator github.com/expressjs/express-messages ver: Express3+
 app.use(require('connect-flash')())
-
 app.use((req, res, next) => {
     res.locals.messages = require('express-messages')(req, res)
     next()
 })
 
-// Middleware for express validator: github.com/ctavan/express-validator
-
-/*
-app.use(expressValidator({
-    errorFormatter: (param, msg, value) => {
-        const namespace = param.split('.'),
-            root = namespace.shift(),
-            formParam = root
-        while (namespace.length) {
-            formParam = '[' + namespace.shift() + ']'
-        }
-        return {
-            param: formParam,
-            msg: msg,
-            value: value
-        }
-    }
-}))
-*/
-
-
 app.use(express.json());
-app.post('/user', (req, res) => {
-    User.create({
-        username: req.body.username,
-        password: req.body.password
-    }).then(user => res.json(user));
-});
-
-// ...rest of the initial code omitted for simplicity.
-
-
-app.post('/user', (req, res) => {
-    // Finds the validation errors in this request and wraps them in an object with handy functions
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).json({
-            errors: errors.array()
-        });
-    }
-
-    User.create({
-        username: req.body.username,
-        password: req.body.password
-    }).then(user => res.json(user));
-});
-
-
 app.use('/', index)
 app.use('/articles', articles)
 app.use('/categories', categories)

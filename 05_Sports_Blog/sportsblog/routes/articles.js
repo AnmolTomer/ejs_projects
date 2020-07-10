@@ -43,7 +43,8 @@ router.post('/add', (req, res, next) => {
             console.log(err)
             res.send(err)
         }
-
+        // Messages
+        req.flash('Success', 'Article Added ✔️')
         res.redirect('/manage/articles')
     })
 })
@@ -70,7 +71,7 @@ router.post('/edit/:id', (req, res, next) => {
             console.log(err)
             res.send(err)
         }
-
+        req.flash('Success', 'Article Updated Successfully✏️')
         res.redirect('/manage/articles')
     })
 })

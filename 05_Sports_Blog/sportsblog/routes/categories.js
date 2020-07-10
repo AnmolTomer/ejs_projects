@@ -28,9 +28,21 @@ router.get('/', (req, res, next) => {
 })
 
 // route for new category form submit action
+const {
+    check,
+    validationResult
+} = require('express-validator');
 
-// Add category - POST
-router.post('/add', (req, res, next) => {
+// Add category - POST REQ
+router.post('/add', [
+    check('title').not().isEmpty().withMessage('Title is required')
+], (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        })
+    }
     let category = new Category()
     category.title = req.body.title // Get the contents from input and text area with names title and description in add_category.pug
     category.description = req.body.description
@@ -39,6 +51,9 @@ router.post('/add', (req, res, next) => {
             console.log(err)
             res.send(err)
         }
+
+        // Flash message before redirecting
+        req.flash('Success', 'Added To Category✔️')
 
         // Print to console
         console.log("\n- - - - - - - - -\n")
@@ -54,6 +69,8 @@ router.post('/add', (req, res, next) => {
     })
     // 
 })
+
+
 
 // Edit category - POST Request
 router.post('/edit/:id', (req, res, next) => {
@@ -84,6 +101,7 @@ router.post('/edit/:id', (req, res, next) => {
         // console.log()
         console.log("\n- - - - - - - - -\n")
 
+        req.flash('Success', 'Category Updated Successfully✏️')
         // Redirect
         res.redirect('/manage/categories')
     })
