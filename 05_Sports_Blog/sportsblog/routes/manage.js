@@ -35,14 +35,22 @@ router.get('/categories', (req, res, next) => {
     })
 })
 
-
+// Add articles
 router.get('/articles/add', (req, res, next) => {
-    res.render('add_article', {
-        title: 'Add Article'
+    Category.getCategories((err, categories) => {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        }
+        res.render('add_article', {
+            title: 'Add Article',
+            categories: categories
+        })
     })
 }) // original path being /manage/articles/add as we are inside manage right now
 
 
+// Add categories
 router.get('/categories/add', (req, res, next) => {
     res.render('add_category', {
         title: 'Add Category'

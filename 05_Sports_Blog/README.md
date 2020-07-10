@@ -90,3 +90,11 @@ db.categories.find()
 - Create a folder js inside public and main.js inside js folder. Include the script in layout.pug. Also include the jQuery.js. Go to main.js and there we have ajax request of type DELETE.
 - Go to categories.js and write code for delete request using router.delete() and create a function removeCategory in category.js which will be called inside router.delete().
 - With this we have full CRUD functionality for categories. Next we add a button to add category on `/manage/categories route`. Go to `manage_categories.pug` to do that.
+
+## 05_08 Articles Model Add Articles
+
+- Upto this point we were able to manage our categories, we have CRUD functionality and we have backend set for categories. Next we do the same thing for articles.
+- First thing we do is in models create article.js to interact with DB for article related functionalities. Similar to category.js, just took that and made necessary changes wherever required, structure and functions are almost same.
+- Now we start with create/add article page and route is `/manage/articles/add`, to do this go to manage.js `/articles/add` route is where we will add the functionality to add articles.
+- On add articles page, we would have to select the category of the article which would come from categories collections of the DB. We make use of `getCategories` function defined in `category.js` to get those.
+- Copy contents of add_category.pug into add_article.pug and edit it wherever needed as the basic body of form remains the same. Refer schema of article.js in models to see what all things you need to get from user.
