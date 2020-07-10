@@ -1,4 +1,39 @@
 extends layout
 
 block content
-    h1 #{title }
+    .container 
+        h1 #{title }
+        form(method="post", action='/articles/edit/'+article._id)
+            .form-group
+                label Title:
+                input.form-control(name='title',type='text', value=article.title)
+
+            .form-group
+                label Subtitle:
+                input.form-control(name='subtitle',type='text', value=article.subtitle)
+                //- textarea.form-control(name='description')
+                //- Next we will have Category of article which we get from categories object, so we can essentially loop through those.
+            .form-group
+                label Category
+                select.form-control(name='category')
+                    each category in categories
+                        if(category._id == article.category)
+                            option(value=category._id,selected) #{category.title}
+                        else
+                            option(value=category._id) #{category.title}
+            .form-group
+                label Author:
+                input.form-control(name='author', type='text',value=article.author)
+            .form-group
+                label Body
+                textarea.form-control(name='body',rows=8) #{article.body}
+                        
+                    
+            input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
+            a.btn.btn-dark(href='/manage/articles') Back⏪️
+            a.btn.btn-danger.article-delete.float-right(href='/manage/articles', data-article-id=article._id) Delete
+            //- a.btn.btn-danger.category-delete.float-right(href='/manage/articles', data-cat-id=category._id) Delete
+
+
+    //- Create route in categories.js for /categories/add
+

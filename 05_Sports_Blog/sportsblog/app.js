@@ -21,6 +21,9 @@ const port = 5000
 // init app
 const app = express()
 
+// Moment for Date and Time
+app.locals.moment = require('moment')
+
 // Routes
 
 const index = require('./routes/index')

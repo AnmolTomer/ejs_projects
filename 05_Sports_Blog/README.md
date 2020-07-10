@@ -11,6 +11,24 @@
 - Same functionality available to manage articles also available.
 - Use of data and time formatter to present Data, Time in a more clean manner.
 - Form validation as well.
+- Run MongoDB in docker using `sudo docker run -d -p 27017:27017 -v ~/data:/data/db mongo`, visit [this](https://www.thachmai.info/2015/04/30/running-mongodb-container/) for detailed info.
+
+- Or you can do this to remove related to mongoDB if you have any, I'd recommend Docker:
+
+```
+dpkg =l | grep mongo
+sudo apt-get purge mongodb*
+sudo service mongod stop
+sudo apt-get purge mongodb-org*
+sudo apt-get purge mongodb mongodb-clients mongodb-server mongodb-dev
+sudo apt-get purge mongodb-10gen
+sudo dpkg -P mongodb-server-core mongo-tools
+REBOOT AND INSTALL AGAIN
+sudo apt install mongodb
+sudo service mongodb start
+mongo
+sudo service mongodb stop
+ ```
 
 ## Tools/Technologies Used
 
@@ -100,3 +118,18 @@ db.categories.find()
 - Copy contents of add_category.pug into add_article.pug and edit it wherever needed as the basic body of form remains the same. Refer schema of article.js in models to see what all things you need to get from user.
 - We are making a POST req to `/articles/add`, go to routes/articles.js and create a post request for `/add`. Similar to `router.post` of categories.
 - Now that we can add articles, we move towards fetching articles from articles collection and showing them on `/manage/articles` route.
+
+## 05_08 Manage Articles
+
+- Now we display articles on the `/manage/articles` route. Go to manage.js and on the route `/articles`, use the getArticles function to get the desired functionality. After that edit `manage_articles.pug`.
+- With this we are able to see our added articles, and add new articles using add button.
+
+![](https://i.imgur.com/Q8qbbXp.png)
+
+- Now we have to write code for `/manage/articles/edit` route and it will be similar to `/manage/categories/edit` route. Take the router.get of categories edit route and modify it as required for articles/edit in `manage.js` and same goes for edit_article.pug which will be similar to add_article.pug form.
+
+![Edit Article View](https://i.imgur.com/99gtRx9.png)
+
+- Now that we have edit article page with all the contents from DB being rendered now we need to define POST route for the form as in action we have the route `action='/articles/edit/'+article._id` in edit_article.pug. Go to routes/articles.js and handle post request from edit_article.pug form on Submission. Similar to `articles.js` /add route POST request but this will be on /edit/:id inside articles.js.
+- Next inside manage/articles table we want to put author and date. We use moment for that.
+- To enable delete option on route /articles/edit/:id we do AJAX request similar to delete category. Go to public/js/main.js edit it out and make a Delete button in edit_article.pug.

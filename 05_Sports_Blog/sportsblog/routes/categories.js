@@ -55,9 +55,7 @@ router.post('/add', (req, res, next) => {
     // 
 })
 
-// Edit category post
-
-
+// Edit category - POST Request
 router.post('/edit/:id', (req, res, next) => {
     let category = new Category()
     const query = {

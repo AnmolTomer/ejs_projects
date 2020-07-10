@@ -1,4 +1,29 @@
 extends layout
 
 block content
-    h1 #{title }
+    .container
+        .row
+            .col-md-9
+                h1 #{title }
+            .col-md-3
+                a(class="btn btn-success create-btn",href='/manage/articles/add') Add Article 🗒️
+                //- a(class="btn btn-success create-btn",href='./add') Add Category ➕️
+        
+        table(class='table table-striped')
+            tr
+                th Article Title
+                th Date Published
+                th Author
+            each article,i in articles
+                tr
+                    td #{article.title}
+                    //- td #{article .created_at}
+                    td #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                    td #{article.author}
+                    td
+                        a(class="btn btn-primary" href='/manage/articles/edit/'+article._id) Edit✏️
+                    //- In the above line be sure to keep a space after a(content) Name, if you don't there will be a long error message with no info about whitespace.
+                    //- If you don't want to use the method above as most IDEs remove that whitespace below is HTML implementation of the same which would work fine as well. Just uncomment and use.
+                        td
+                            <a href="/manage/articles/edit/#{article._id}" class="btn btn-primary mr-3">Edit✏️</a>
+
