@@ -18,8 +18,11 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/show/:id', (req, res, next) => {
-    res.render('article', {
-        title: 'Show Article'
+    Article.getArticleById(req.params.id, (err, article) => {
+        res.render('article', {
+            title: 'Article',
+            article: article
+        })
     })
 })
 
@@ -112,6 +115,24 @@ router.delete('/delete/:id', (req, res, next) => {
 
     })
     // 
+})
+
+// Comments form POST
+router.post('/comments/add/:id', (req, res, next) => {
+    let article = new Article();
+    let query = {
+        _id: req.params.id
+    }
+
+    let comment = {
+        comment_subject: req.body.comment_subject,
+        comment_author: req.body.comment_author,
+        comment_body: req.body.comment_body,
+        comment_email: req.body.comment_email
+    }
+    Article.addComment(query, comment, (err, article) => {
+        res.redirect('/articles/show/' + req.params.id)
+    })
 })
 
 module.exports = router

@@ -10,7 +10,7 @@ block content
         .row
             .col-md-12
                 each article,i in articles
-                    a(href='/article/show/'+article._id)
+                    a(href='/articles/show/'+article._id)
                         h2.post-title #{article.title}
                         h4.post-subtitle #{article.subtitle}
                     p.post-meta

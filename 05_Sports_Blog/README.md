@@ -149,3 +149,13 @@ db.categories.find()
 
 - Now we move towards user side of things, i.e. the content being shown to user, nav bar and other things. Navbar will have homepage, articles, categories and manage pages.
 - As we will have a dropdown for manage sections, so we need bootstrap.js for that. We will include it in layout.pug.
+
+## 05_12 Comment Functionality
+
+- We will create form on single article page and store the comments in an array. Ref: `views/article.pug`, define a new function inside models to get the comment related details in a form and pass it on as an object as per the article id into DB.
+
+- Comment Functionality implemented.
+
+![](https://i.imgur.com/4teV3Qa.png)
+
+![](https://i.imgur.com/qZLFCL7.png)

@@ -90,3 +90,13 @@ module.exports.updateArticle = function (query, update, options, callback) {
 module.exports.removeArticle = function (query, callback) {
     Article.deleteOne(query, callback)
 }
+
+// Create Method for Comment
+
+module.exports.addComment = function (query, comment, callback) {
+    Article.updateOne(query, {
+        $push: {
+            comments: comment
+        }
+    }, callback)
+}
