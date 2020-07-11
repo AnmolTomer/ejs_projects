@@ -1,6 +1,14 @@
 # Sports Blog
 
->## Sports Blog Demo
+>## Sports Blog Demo - Web View
+
+![](demo.gif)
+
+
+>## Mobile View
+
+![](mobile.gif)
+
 
 ## 05_01 Project Intro
 
