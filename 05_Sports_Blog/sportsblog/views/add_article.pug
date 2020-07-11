@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .container 
+        h1 #{title }
+        form(method="post", action="/articles/add")
+            .form-group
+                label Title:
+                input.form-control(name='title',type='text',required)
+
+            .form-group
+                label Subtitle:
+                input.form-control(name='subtitle',type='text',required)
+                //- textarea.form-control(name='description')
+                //- Next we will have Category of article which we get from categories object, so we can essentially loop through those.
+            .form-group
+                label Category
+                select.form-control(name='category')
+                    each category in categories
+                        option(value=category._id) #{category.title}
+            .form-group
+                label Author:
+                input.form-control(name='author', type='text',required)
+            .form-group
+                label Body
+                textarea.form-control(name='body',rows=8,required)
+                        
+                    
+            input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
+            a.btn.btn-danger(href='/manage/articles') Back⏪️
+
+    //- Create route in categories.js for /categories/add
+

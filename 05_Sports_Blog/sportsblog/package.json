@@ -1,0 +1,23 @@
+{
+  "name": "sportsblog",
+  "version": "1.0.0",
+  "description": "Simple sports blog webapp.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "author": "Anmol Tomer",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "*",
+    "connect-flash": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "^6.6.0",
+    "moment": "*",
+    "mongoose": "*",
+    "pug": "^2.0.0-beta6"
+  }
+}

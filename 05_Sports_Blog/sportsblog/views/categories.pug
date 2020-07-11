@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .container
+        h1 #{title }
+        //- Use categories and title received from categories.js
+        ul.list-group
+            each category,i in categories
+                li.list-group-item
+                    //- Should give us a list of categories present in db on localhost:5000/categories route
+                    a(href='/articles/category/'+category._id) #{category.title}
