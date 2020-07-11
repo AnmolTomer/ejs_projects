@@ -1,0 +1,22 @@
+
+nav.navbar.navbar-dark.bg-primary.navbar-expand-lg.navbar-static-top
+  a.navbar-brand(href='/') SportsBlog ⚽️⚾️🏀️🏏️
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNavDropdown.collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item
+        a.nav-link(href='/')
+          | Home 🏡️
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='/articles') Articles 🗒️
+      li.nav-item
+        a.nav-link(href='/categories') Categories 🎟️
+      li.nav-item.dropdown
+        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+          | Manage Blog 💼️
+        .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+          a.dropdown-item(href='/manage/articles') Articles 🗒️
+          a.dropdown-item(href='/manage/categories') Categories 🎟️
+          // <a class="dropdown-item" href="#">Something else here</a>

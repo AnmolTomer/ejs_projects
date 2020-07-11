@@ -6,11 +6,14 @@ const router = express.Router()
 
 // Bring in Article model
 
-Article = require('../models/article')
+const Article = require('../models/article')
 
 router.get('/', (req, res, next) => {
-    res.render('articles', {
-        title: 'Articles'
+    Article.getArticles((err, articles) => {
+        res.render('articles', {
+            title: 'Articles',
+            articles: articles
+        })
     })
 })
 
@@ -20,9 +23,17 @@ router.get('/show/:id', (req, res, next) => {
     })
 })
 
+// Get articles category wise
 router.get('/category/:category_id', (req, res, next) => {
-    res.render('articles', {
-        title: 'Category Articles'
+
+    Article.getCategoryArticles(req.params.category_id, (err, articles) => {
+        Category.getCategoryById(req.params.category_id, (err, category) => {
+            res.render('articles', {
+                title: category.title + ' Articles',
+                articles: articles
+            })
+        })
+
     })
 })
 

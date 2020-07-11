@@ -143,3 +143,9 @@ db.categories.find()
 
 - To show a message we can see that in the route /manage/categories when we add something and do a res.redirect, before that we can send a flash message.  We can do so by entering the following `req.flash('Success', 'Added To Category')` after that we go to app.js and setup connect-flash and we use a variable globally called messages which we may use in our templates to show messages. So we should add the message in `/manage/categories/` route as that's where we will be redirected once we submit the request successfully. Make some changes to style.css and messages will work on your page.
 - On adding articles also we want the same effect, so we go to articles.js and before the redirect request we do the same as we did for categories.
+- With messages showing up on Add and Edit for category and articles we are done with admin side or things related to controlling the content on the site.
+
+## 05_11 Navbar Showcase
+
+- Now we move towards user side of things, i.e. the content being shown to user, nav bar and other things. Navbar will have homepage, articles, categories and manage pages.
+- As we will have a dropdown for manage sections, so we need bootstrap.js for that. We will include it in layout.pug.

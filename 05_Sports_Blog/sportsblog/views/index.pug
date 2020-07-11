@@ -1,4 +1,19 @@
 extends layout
 
 block content
-    h1 #{title}
+    .jumbotron.showcase
+        .container
+            h1 SportsBlog
+            p.lead A Simple and Clean Sports Based Blogging Site.
+
+    .container
+        .row
+            .col-md-12
+                each article,i in articles
+                    a(href='/article/show/'+article._id)
+                        h2.post-title #{article.title}
+                        h4.post-subtitle #{article.subtitle}
+                    p.post-meta
+                        | Posted by #{article.author}
+                        | on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                    hr

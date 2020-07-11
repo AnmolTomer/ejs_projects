@@ -6,6 +6,9 @@ html
         link(rel="stylesheet", href="/css/style.css")
         
     body
+        //- include ./navbar.html
+        include ./includes/navbar.pug
+        
         block content
         hr
         footer
@@ -13,4 +16,5 @@ html
                 Copyright &copy; 2020, SportsBlog
 
         script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
         script(src='/js/main.js')

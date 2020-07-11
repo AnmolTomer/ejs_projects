@@ -42,6 +42,9 @@ const articleSchema = mongoose.Schema({
     }]
 })
 
+
+
+
 // Article will allow access outside the file.
 const Article = module.exports = mongoose.model('Article', articleSchema);
 
@@ -57,6 +60,17 @@ module.exports.getArticles = function (callback, limit) {
 
 module.exports.addArticle = function (article, callback) {
     Article.create(article, callback)
+}
+
+// Get Article By Category
+
+module.exports.getCategoryArticles = function (categoryId, callback) {
+    let query = {
+        category: categoryId
+    }
+    Article.find(query, callback).sort([
+        ['title', 'ascending']
+    ])
 }
 
 // Get Single Article by its ID
