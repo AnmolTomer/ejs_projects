@@ -1,0 +1,33 @@
+{
+  "name": "passport_login",
+  "version": "1.0.0",
+  "description": "Simple login app using Passport.js and Handlebars.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "MongoDB",
+    "UserAuthentication",
+    "Login",
+    "Sign_up"
+  ],
+  "author": "Anmol Tomer",
+  "license": "MIT",
+  "start": "node app",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "^1.0.1",
+    "express-session": "*",
+    "express-validator": "^6.6.0",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
+  }
+}
