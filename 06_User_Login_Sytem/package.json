@@ -1,0 +1,24 @@
+{
+  "name": "express-node-server-side-form-validation",
+  "version": "1.0.0",
+  "description": "Express and Node.js server-side form validation tutorial with examples",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anmol Tomer",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-hbs": "^2.1.2",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
