@@ -20,7 +20,8 @@ router.get('/register', (req, res, next) => {
 router.post('/register', [
   body('name').notEmpty().withMessage('Name is required.'),
   body('username').notEmpty().withMessage('Username is required.'),
-  body('email').notEmpty().isEmail().withMessage('Email is required.'),
+  body('email').notEmpty().withMessage('Email is required.'),
+  body('email').isEmail().withMessage('Email must be a valid email addres.'),
   body('password').notEmpty().withMessage('Password field is required.'),
   body('password2').equals('password').withMessage('Passwords do not match.')
 
@@ -36,7 +37,7 @@ router.post('/register', [
 
   if (errors) {
     res.render('register', {
-      errors: errors
+      errors: errors.array()
     });
   } else {
     console.log('SUCCESS');
