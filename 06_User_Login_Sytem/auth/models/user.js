@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/passportapp', {
+mongoose.connect('mongodb://localhost/passportapp', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', userSchema)
 
-module.exports.register = function (newUser, callback) {
+module.exports.createUser = function (newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) {
