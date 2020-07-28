@@ -88,3 +88,38 @@ passport.deserialization((id, done) => {
 - If we use front end validation, malicious agents can directly disable the JS removing the validation entirely to be able to submit whatever they want, including malicious scripts. Backend validation protects you from these kind of attacks.
 - That's why we follow this: Process Data on Backend >> Validate Backend Data >> Store Data in DB >> Hash User credentials > Validate Frontend data.
 - More on using newer version of express validator [here](https://www.youtube.com/watch?v=WFHzlExDwrY)
+- To implement user input validation on backend use the following for post request route of /register page
+
+```js
+router.post(
+  "/register",
+  [
+    body("name").notEmpty().withMessage("Name is required."), // middleware if all goes good, then proceed to console log SUCCESS
+    body("username").notEmpty().withMessage("Username is required."),
+    body("email").notEmpty().withMessage("Email is required."),
+    body("email").isEmail().withMessage("Email must be a valid email addres."),
+    body("password").notEmpty().withMessage("Password field is required."),
+    body("password2").equals("password").withMessage("Passwords do not match."),
+  ],
+  (req, res, next) => {
+    const errors = validationResult(req);
+    // let errors = req.validationErrors();
+
+    if (errors) {
+      res.render("register", {
+        errors: errors.array(),
+      });
+    } else {
+      console.log("SUCCESS");
+      return;
+    }
+  }
+);
+```
+
+---
+
+## 03. Registration Model
+
+- We create models directory and we do all the major mongoose related work in this directory.
+- We define the user schema in `./models/user.js`.
