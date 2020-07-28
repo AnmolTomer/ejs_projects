@@ -18,7 +18,7 @@ router.get('/register', (req, res, next) => {
 
 // Process Register
 router.post('/register', [
-  body('name').notEmpty().withMessage('Name is required.'),
+  body('name').notEmpty().withMessage('Name is required.'), // middleware if all goes good, then proceed to adding entry to DB
   body('username').notEmpty().withMessage('Username is required.'),
   body('email').notEmpty().withMessage('Email is required.'),
   body('email').isEmail().withMessage('Email must be a valid email addres.'),
@@ -26,11 +26,6 @@ router.post('/register', [
   body('password2').equals('password').withMessage('Passwords do not match.')
 
 ], (req, res, next) => {
-  const name = req.body.name;
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  const password2 = req.body.password2;
 
   const errors = validationResult(req);
   // let errors = req.validationErrors();
