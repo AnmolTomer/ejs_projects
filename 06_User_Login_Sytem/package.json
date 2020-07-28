@@ -8,17 +8,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anmol Tomer",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.4",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-hbs": "^2.1.2",
-    "express-session": "^1.17.0",
-    "express-validator": "^6.2.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.4"
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "express-hbs": "^2.3.4",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "bcryptjs": "*"
   }
 }
