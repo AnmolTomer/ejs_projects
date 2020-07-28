@@ -87,4 +87,4 @@ passport.deserialization((id, done) => {
 - While doing validation, there are 2 kinds of validation that can be possible, backend and frontend. We validate user input with Node.js in backend validation, whereas when it comes to front end validation is activated in the browser using JS. It notifies the users when they have entered an incorrect piece of information into the data. This is great to improve UX but doesn't helps much to protect the app from malicious actors.
 - If we use front end validation, malicious agents can directly disable the JS removing the validation entirely to be able to submit whatever they want, including malicious scripts. Backend validation protects you from these kind of attacks.
 - That's why we follow this: Process Data on Backend >> Validate Backend Data >> Store Data in DB >> Hash User credentials > Validate Frontend data.
-- More on using newer version of express validatory [here](https://www.youtube.com/watch?v=WFHzlExDwrY)
+- More on using newer version of express validator [here](https://www.youtube.com/watch?v=WFHzlExDwrY)

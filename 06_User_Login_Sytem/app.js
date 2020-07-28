@@ -15,6 +15,7 @@ const user = require('./routes/user.routes');
 
 const users = require('./routes/users')
 const index = require('./routes/index')
+const register = require('./routes/register')
 // const users = require('./routes/users')
 // Express settings
 const app = express();
@@ -40,19 +41,21 @@ app.use('/public', express.static('public'));
 //     partialsDir: __dirname + '/views/partials',
 // }));
 app.engine('hbs', hbs.express4({
-    partialsDir: __dirname + '/views/partials',
+    partialsDir: __dirname + '/views/layouts',
 
     defaultLayout: './views/layouts/main'
 
 }));
 
 app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views/partials');
+app.set('views', __dirname + '/views/layouts');
+// app.set('views', __dirname + '/views/partials');
 
 // Initiate API
 app.use('/user', user)
 app.use('/index', index)
 app.use('/users', users)
+app.use('/register', register)
 
 app.use(require('connect-flash')())
 app.use((req, res, next) => {
