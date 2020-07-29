@@ -1,1 +1,16 @@
-LOGIN
+<form method="post" action="/login">
+
+    <div>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Username">
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit">Login</button>
+    <br>
+    Don't have An Account? <a href="/register">Register</a>
+</form>
+{{!-- <a href="/login"><button type="submit">TEST</button></a> --}}

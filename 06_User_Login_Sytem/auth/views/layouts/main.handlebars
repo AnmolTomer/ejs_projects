@@ -16,6 +16,9 @@
   <div class="alert alert-danger">{{error_msg}}</div>
   {{!-- For Express Validator --}}
   {{/if}}
+  {{#if error}}
+  <div class="alert alert-danger">{{error}}</div>
+  {{/if}}
   {{#if errors}}
   {{#each errors}}
   <div class="alert alert-danger">{{msg}}</div>

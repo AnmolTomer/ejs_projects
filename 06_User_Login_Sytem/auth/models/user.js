@@ -44,3 +44,26 @@ module.exports.createUser = function (newUser, callback) {
         })
     })
 }
+
+module.exports.getUserByUsername = function (username, callback) {
+    const query = {
+        username: username
+    }
+    User.findOne(query, callback)
+}
+
+
+//  Getting user by Id
+module.exports.getUserById = function (id, callback) {
+    User.findById(id, callback)
+}
+
+// Compare password, take the password passed in and compare the hash of saved and input
+// We use bcrypt to check the hash
+
+module.exports.comparePassword = function (candidatePassword, hash, callback) {
+    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        if (err) throw err;
+        callback(null, isMatch)
+    })
+}
