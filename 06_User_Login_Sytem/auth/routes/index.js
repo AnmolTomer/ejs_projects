@@ -11,7 +11,7 @@ const {
 
 let User = require('../models/user')
 // Home Page
-router.get('/', (req, res, next) => {
+router.get('/', ensureAuthenticated, (req, res, next) => {
 	res.render('index');
 });
 
@@ -21,6 +21,11 @@ router.get('/register', (req, res, next) => {
 	res.render('register');
 });
 
+router.get('/logout', (req, res, next) => {
+	req.logout()
+	req.flash('success_msg', 'You logged out successfully.✅')
+	res.redirect('/login')
+})
 
 // Login Get to display
 router.get('/login', (req, res, next) => {
@@ -48,20 +53,20 @@ passport.use(new LocalStrategy((username, password, done) => {
 				})
 			}
 		})
+		passport.serializeUser((id, done) => {
+			done(null, user.id)
+		})
+
+		passport.deserializeUser((id, done) => {
+			User.getUserById(id, (err, user) => { // Model function
+				done(err, user)
+			})
+		})
 	})
 }))
-
 // Serialize user
 
-passport.serializeUser((id, done) => {
-	done(null, user.id)
-})
 
-passport.deserializeUser((id, done) => {
-	User.getUserById(id, (err, user) => { // Model function
-		done(err, user)
-	})
-})
 
 // Post request on /login
 
@@ -130,5 +135,15 @@ router.post('/register', [
 		})
 	}
 });
+
+// Access Control
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) {
+		return next();
+	} else {
+		req.flash('error_msg', 'You are not authorized to view that page!⛔⛔')
+		res.redirect('/login')
+	}
+}
 
 module.exports = router;
