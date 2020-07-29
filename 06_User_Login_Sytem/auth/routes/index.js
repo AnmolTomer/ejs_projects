@@ -46,28 +46,6 @@ router.post('/register', [
       return value;
     }
   })
-  // body("password", "Password field required.").notEmpty().isLength({
-  //   min: 4
-  // }).custom((value, {
-  //   req
-  // }) => {
-  //   if (value !== req.body.password2) {
-  //     // trow error if passwords do not match
-  //     throw new Error("Passwords don't match");
-  //   }
-  //   return value
-  // })
-
-  // body('password2').custom((value, {
-  //   req
-  // }) => {
-  //   if (value !== req.body.password) {
-  //     throw new Error('Passwords do not match.')
-  //   }
-  //   return true;
-  // })
-
-
 ], (req, res, next) => {
 
   // let errors = req.validationErrors();
@@ -95,7 +73,8 @@ router.post('/register', [
     // Register User
     console.log("Added to DB ✅✅")
     User.createUser(newUser, (err, user) => {
-      if (err) throw err;
+      if (err) throw err; // Line below sends the message for flash notifier.
+      req.flash('success_msg', 'You are registered! Please proceed to login.')
       res.redirect('/login')
     })
   }

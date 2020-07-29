@@ -30,15 +30,22 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 
+app.use(session({
+    cookie: {
+        maxAge: 60000
+    },
+    secret: 'woot',
+    resave: true,
+    saveUninitialized: false
+}))
 
-// Express messages
-app.use(require('connect-flash')());
-app.use((req, res, next) => {
+app.use(flash());
+app.use(function (req, res, next) {
     res.locals.messages = require('express-messages')(req, res);
-    next();
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
+    next()
 });
-
-
 //  Routing
 app.use('/', index)
 app.use('/users', users)
