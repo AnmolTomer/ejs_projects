@@ -1,5 +1,13 @@
 # User Login System
 
+## Technologies Used
+
+- 💻 UI - [Bootswatch](https://bootswatch.com/)
+- 🛠 Database - [MongoDB](https://www.mongodb.com/)
+- ✅ Validator - [epxress-validator](https://express-validator.github.io/docs/)
+- 🔐 Authentication: [Passport.js](http://www.passportjs.org/)
+- 🔑 Password Hashing: [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+
 ![Demo](demo.gif)
 
 ## 00. Intro
