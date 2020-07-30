@@ -1,5 +1,7 @@
 # User Login System
 
+![Demo](demo.gif)
+
 ## 00. Intro
 
 - Here we implement access control, it is important as it is something required in all web apps most of the time and this can easily be implemented in all of the other projects that we will be doing.
@@ -123,3 +125,7 @@ router.post(
 
 - We create models directory and we do all the major mongoose related work in this directory.
 - We define the user schema in `./models/user.js`.
+
+## 04. UI
+
+- For Bootstrap custom themes visit: [Bootswatch](https://bootswatch.com/)
