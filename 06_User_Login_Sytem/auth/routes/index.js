@@ -82,11 +82,11 @@ router.post('/login', (req, res, next) => {
 // Express Validator Docs https://express-validator.github.io/docs/
 // Process Register Form
 router.post('/register', [
-	body('name').notEmpty().withMessage('Name is required.'), // middleware if all goes good, then proceed to adding entry to DB
-	body('username').notEmpty().withMessage('Username is required.'),
-	body('email').notEmpty().withMessage('Email is required.'),
-	body('email').isEmail().withMessage('Email must be a valid email addres.'),
-	body("password", "invalid password")
+	body('name').notEmpty().withMessage('Name is required.⛔⛔'), // middleware if all goes good, then proceed to adding entry to DB
+	body('username').notEmpty().withMessage('Username is required.📛'),
+	body('email').notEmpty().withMessage('Email is required.📩📩'),
+	body('email').isEmail().withMessage('Email must be a valid email addres. 📨📨'),
+	body("password", "Invalid Password ❌")
 	.isLength({
 		min: 4
 	})

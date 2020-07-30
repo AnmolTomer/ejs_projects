@@ -12,7 +12,7 @@ const mongoose = require('mongoose')
 // Init app
 const app = express()
 port = 3000
-
+app.use(express.static(path.join(__dirname, 'public')))
 // View Engine
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
@@ -44,20 +44,20 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(flash());
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     res.locals.messages = require('express-messages')(req, res);
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
     res.locals.user = req.user || null
     next()
-});
+})
 //  Routing
 app.use('/', index)
 app.use('/users', users)
 
 
 // Start server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log('Server started on port ' + port)
 })
