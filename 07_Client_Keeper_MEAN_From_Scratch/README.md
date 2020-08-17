@@ -225,4 +225,26 @@ app.use((req, res, next) => {
 - Next go to `index.html` and add the bootswatch theme of your choice I have used spacelab.
 - Next we want navbar, so create a new components folder called navbar. Then copy stuff from clients.component.ts and remove useless stuff.
 - Once you are done with `navbar.component.ts`, then we add it to `app.module.ts`, similar to `clients.component` and add it to declarations by name of `NavbarCompenent`.
-- Go to template `app.component.html` and above clients we make a navbar place. For clients we wrap the container div to move it to middle.
+- Go to template `app.component.html` and above clients we make a navbar place. For clients we wrap the container div to move it to middle. Next we add form to add clients through app.
+
+## 04. Add Client Form Functionality
+
+- Go to client.components.html and define a form with a post ability to run the function `(submit)="onAddSubmit()"` on submission of form.
+- Go to `client.components.ts` and define a function `onAddSubmit()` then we add properties _id,first_name and all the other params that you want to send to the DB.
+- In the onAddSubmit() function we create an object called newClient and we create object with all the details. Create `this.clientService.saveClient(newClient)` service function is an observable and takes in newClient object we made it will give us client we submit and push it to clients.
+- Make the form blank again after submit.
+- Go to client.service.ts and create `saveClient()` function which takes the client object, use http module to get headers and set its content type to application/json. Then we return a post request with address of backend api and to it we send client object with headers and we map it and use res.json().
+- 
+## 05. Edit Functionality
+
+- Now we'd have separate form to edit. Way to let the system know if it is add form or edit form is to add a property in clients.components.ts and we want it in `ngOnInit()` to be false by default.
+-  On clicking edit we want to change state isEdit to true. Add an event of `(click)="onEditClick()"` and pass in the client that is clicked.
+- Go to clients.components.ts and define `onEditClick()` function inside this function set `isEdit` to true.
+- Go to `<div>` section of `isEdit` true and paste the form.
+
+## 06. Delete Functionality
+
+- Similar to Edit functionality, we create an event of (click) and run a function when that happens.
+- After that in clients.component.ts add onDeleteClick() function which was called on clients.components.html page.
+- Do `ng build` and it will build all the app in dist folder. We can then take contents of dist and add it to public folder.
+- Just run the express server via nodemon and then you have your entire website front and backend working just as fine.

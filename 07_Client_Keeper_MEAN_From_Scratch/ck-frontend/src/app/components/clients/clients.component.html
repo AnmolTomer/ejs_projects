@@ -1,22 +1,76 @@
-<div class="client-list">
-  <table class="table table-striped">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Company</th>
-      <th></th>  <!--Button -->
-    </tr>
-    <tr *ngFor="let client of clients">
-      <td>{{client.first_name}}</td>
-      <td>{{client.last_name}}</td>
-      <td>{{client.email}}</td>
-      <td>{{client.phone}}</td>
-      <td>{{client.company}}</td>
-      <td><a href="" class="btn btn-primary">Edit</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
-    </tr>
+<div class="client-form">
+    <div *ngIf="isEdit">
+        <form (submit)="onEditSubmit()" class="well">
+            <h3>Edit Client</h3>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" [(ngModel)]="first_name" name="first_name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" [(ngModel)]="last_name" name="last_name" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" [(ngModel)]="phone" name="phone" placeholder="Phone Number">
+            </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" class="form-control" [(ngModel)]="company" name="company" placeholder="Company">
+          </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
-  </table>
+    <div *ngIf="!isEdit">
+        <form (submit)="onAddSubmit()" class="well">
+            <h3>Add Client</h3>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" [(ngModel)]="first_name" name="first_name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" [(ngModel)]="last_name" name="last_name" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" [(ngModel)]="phone" name="phone" placeholder="Phone Number">
+            </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" class="form-control" [(ngModel)]="company" name="company" placeholder="Phone Number">
+          </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<div class="client-list">
+    <table class="table table-striped">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let client of clients">
+            <td>{{client.first_name}}</td>
+            <td>{{client.last_name}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.phone}}</td>
+          <td>{{client.company}}</td>
+            <td><a (click)="onEditClick(client)" href="#" class="btn btn-default">Edit</a>
+              <a (click)="onDeleteClick(client._id)" href="#" class="btn btn-danger">Delete</a></td>
+        </tr>
+    </table>
 </div>

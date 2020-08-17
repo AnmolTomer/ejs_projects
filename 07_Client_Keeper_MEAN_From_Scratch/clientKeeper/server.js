@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 // instantiate the app
 const app = express()
 
+var ObjectId = require('mongodb').ObjectID;
+
 // Port
 const port = 3000
 
@@ -108,7 +110,7 @@ app.delete('/api/clients/:id', (req, res, next) => {
 
 
 // Listen on some port.
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log("Server started on port" + port)
 })
 

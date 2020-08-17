@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ec71771-3514-45c4-96e5-c976a3b7483b" name="Default Changelist" comment="" />
+    <list default="true" id="5ec71771-3514-45c4-96e5-c976a3b7483b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/components/clients/clients.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/components/clients/clients.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/components/clients/clients.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/components/clients/clients.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/services/client.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/app/services/client.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/ck-frontend/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/clientKeeper/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/clientKeeper/server.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,10 +33,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/07_Client_Keeper_MEAN_From_Scratch/clientKeeper/public" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="ts.external.directory.path" value="D:\ECM\video_courses_and_books\videos\ejs_projects\07_Client_Keeper_MEAN_From_Scratch\ck-frontend\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ECM\video_courses_and_books\videos\ejs_projects\07_Client_Keeper_MEAN_From_Scratch\clientKeeper\public" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -37,7 +52,8 @@
       <option name="presentableId" value="Default" />
       <updated>1597638482696</updated>
       <workItem from="1597638488546" duration="8564000" />
-      <workItem from="1597647162385" duration="530000" />
+      <workItem from="1597647162385" duration="4925000" />
+      <workItem from="1597660126054" duration="15240000" />
     </task>
     <servers />
   </component>
@@ -48,9 +64,45 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2636" y="359" key="#Notifications" timestamp="1597660142864">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2636" y="359" key="#Notifications/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597660142864" />
+    <state width="1899" height="288" key="GridCell.Tab.0.bottom" timestamp="1597678135315">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597678135315" />
+    <state width="1899" height="288" key="GridCell.Tab.0.center" timestamp="1597678135315">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="288" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597678135315" />
+    <state width="1899" height="288" key="GridCell.Tab.0.left" timestamp="1597678135315">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="288" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597678135315" />
+    <state width="1899" height="288" key="GridCell.Tab.0.right" timestamp="1597678135315">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="288" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597678135315" />
     <state x="2381" y="184" key="SettingsEditor" timestamp="1597647249804">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2381" y="184" key="SettingsEditor/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597647249804" />
+    <state x="2659" y="384" key="cloudConfig.PluginsDialog" timestamp="1597660109629">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2659" y="384" key="cloudConfig.PluginsDialog/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597660109629" />
+    <state x="2752" y="384" key="cloudConfig.SelfSettingsDialog" timestamp="1597660104497">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2752" y="384" key="cloudConfig.SelfSettingsDialog/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597660104497" />
+    <state x="2536" y="250" key="run.anything.popup" timestamp="1597659296562">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2536" y="250" key="run.anything.popup/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597659296562" />
+    <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1597678965478">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597678965478" />
   </component>
 </project>
