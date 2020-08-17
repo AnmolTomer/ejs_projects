@@ -241,3 +241,10 @@ app.use((req, res, next) => {
 -  On clicking edit we want to change state isEdit to true. Add an event of `(click)="onEditClick()"` and pass in the client that is clicked.
 - Go to clients.components.ts and define `onEditClick()` function inside this function set `isEdit` to true.
 - Go to `<div>` section of `isEdit` true and paste the form.
+
+## 06. Delete Functionality
+
+- Similar to Edit functionality, we create an event of (click) and run a function when that happens.
+- After that in clients.component.ts add onDeleteClick() function which was called on clients.components.html page.
+- Do `ng build` and it will build all the app in dist folder. We can then take contents of dist and add it to public folder.
+- Just run the express server via nodemon and then you have your entire website front and backend working just as fine.
