@@ -83,7 +83,7 @@ export class AppComponent {
 
 - `npm install -g angular-cli` to install it.
 - `ng new myapp` - To build a app.
-- `ng server` - Run development server.
+- `ng serve` - Run development server.
 - `ng build` - To compile our project. We generate the app on dev server while we are working on it and then we compile it to HTML and JS and then we add it to a public folder, the backend. That way, we will have our frontend running on the same port as our backend.
 
 ---
