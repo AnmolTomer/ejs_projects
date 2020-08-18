@@ -2,6 +2,8 @@
 
 > MEAN Stack Application from Scratch
 
+![](demo.gif)
+
 - **MEAN** stands for MongoDB, Express, Angular and NodeJS.
 - **Angular** is a front-end client side framework. We will build front-end in Angular
 - **Backend and API**: Node + Express.
@@ -157,11 +159,11 @@ import { Component } from "@angular/core";
 export class ClientsComponent {
   title = "app works!";
 }
-
 ```
-- Once we have the `clients` component inside the `src/app/components` directory we have to bring it inside the  app.module.ts file. So we import ClientsComponent from `./components/clients/clients.components.ts`
+
+- Once we have the `clients` component inside the `src/app/components` directory we have to bring it inside the app.module.ts file. So we import ClientsComponent from `./components/clients/clients.components.ts`
 - Then we need to add ClientsComponents to the declarations of the app.module.ts.
-- We go to `app.component.html` file and we bring in to our template `<clients></clients>` we keep the name as clients as inside the `clients.components.ts` file we have kept the `selector:'clients'` 
+- We go to `app.component.html` file and we bring in to our template `<clients></clients>` we keep the name as clients as inside the `clients.components.ts` file we have kept the `selector:'clients'`
 - Next inside the `./components/clients/clients.components.html` file is created. Write whatever in this, and now on going to `localhost:4200` stuff inside clients.components.html is shown.
 
 - In next section we go over making a service, we will use it to make a request to our backend and get a list of clients and output them on our front-end.
@@ -172,24 +174,28 @@ export class ClientsComponent {
 - We need to create a service. Under app folder create new folder called services. Create a file called client.service.ts.
 - We make changes to client.service.ts and then to user service we have to import it in app.module.ts.
 - Go to `clients.component.ts` and import the service there.
-- We want  `getClient` service function to run immediately. We could put it in constructor but better way to do it is using `OnInit` method().
+- We want `getClient` service function to run immediately. We could put it in constructor but better way to do it is using `OnInit` method().
 - Add the following to `server.js` to allow requests from localhost:4200 to backend@ localhost:3000.
 
 ```js
 // Allow requests from angular
 app.use((req, res, next) => {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // Pass to next layer of middleware
-    next();
-})
-``` 
+  // Website you wish to allow to connect
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  // Request methods you wish to allow
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  // Pass to next layer of middleware
+  next();
+});
+```
+
 - Now we can see that objects are being returned to frontend from the mongoDB collections.
-![](https://i.imgur.com/zvxQWqy.png)
+  ![](https://i.imgur.com/zvxQWqy.png)
 
 - Next we take the response we are getting called clients inside clients.component.ts and we will assign it as a property to our component and we will access from template and loop through it to output each client.
 - After that we do some bootstrap to make it look good.
@@ -201,26 +207,26 @@ app.use((req, res, next) => {
 
 ```html
 <table class="table table-striped">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Company</th>
-      <th></th>  <!--Button -->
-    </tr>
-    <tr *ngFor="let client of clients">
-      <td>{{client.first_name}}</td>
-      <td>{{client.last_name}}</td>
-      <td>{{client.email}}</td>
-      <td>{{client.phone}}</td>
-      <td>{{client.company}}</td>
-      <td><a href="" class="btn btn-primary">Edit</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
-    </tr>
-
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Company</th>
+    <th></th>
+    <!--Button -->
+  </tr>
+  <tr *ngFor="let client of clients">
+    <td>{{client.first_name}}</td>
+    <td>{{client.last_name}}</td>
+    <td>{{client.email}}</td>
+    <td>{{client.phone}}</td>
+    <td>{{client.company}}</td>
+    <td><a href="" class="btn btn-primary">Edit</a></td>
+    <td><a href="" class="btn btn-danger">Delete</a></td>
+  </tr>
 </table>
-``` 
+```
 
 - Next go to `index.html` and add the bootswatch theme of your choice I have used spacelab.
 - Next we want navbar, so create a new components folder called navbar. Then copy stuff from clients.component.ts and remove useless stuff.
@@ -230,15 +236,16 @@ app.use((req, res, next) => {
 ## 04. Add Client Form Functionality
 
 - Go to client.components.html and define a form with a post ability to run the function `(submit)="onAddSubmit()"` on submission of form.
-- Go to `client.components.ts` and define a function `onAddSubmit()` then we add properties _id,first_name and all the other params that you want to send to the DB.
+- Go to `client.components.ts` and define a function `onAddSubmit()` then we add properties \_id,first_name and all the other params that you want to send to the DB.
 - In the onAddSubmit() function we create an object called newClient and we create object with all the details. Create `this.clientService.saveClient(newClient)` service function is an observable and takes in newClient object we made it will give us client we submit and push it to clients.
 - Make the form blank again after submit.
 - Go to client.service.ts and create `saveClient()` function which takes the client object, use http module to get headers and set its content type to application/json. Then we return a post request with address of backend api and to it we send client object with headers and we map it and use res.json().
-- 
+-
+
 ## 05. Edit Functionality
 
 - Now we'd have separate form to edit. Way to let the system know if it is add form or edit form is to add a property in clients.components.ts and we want it in `ngOnInit()` to be false by default.
--  On clicking edit we want to change state isEdit to true. Add an event of `(click)="onEditClick()"` and pass in the client that is clicked.
+- On clicking edit we want to change state isEdit to true. Add an event of `(click)="onEditClick()"` and pass in the client that is clicked.
 - Go to clients.components.ts and define `onEditClick()` function inside this function set `isEdit` to true.
 - Go to `<div>` section of `isEdit` true and paste the form.
 
