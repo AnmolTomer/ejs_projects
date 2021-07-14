@@ -16,15 +16,14 @@ router.post('/send', (req, res, next) => {
     const transporter = nodemailer.createTransport({
         host: 'smtp.ethereal.email',
         port: 587,
-        secure: false,
         auth: {
-            user: 'cortney27@ethereal.email',
-            pass: 'qARJBFuhxzxHWwAR4T'
-        },
+            user: 'manuel.pfannerstill@ethereal.email',
+            pass: 'CZJqFnN5UPcFkEm8rU'
+        }
     });
 
     var mailOptions = {
-        from: '"Cortney Halvorson👻" <cortney27@ethereal.email>',
+        from: '"Manuel Pfannerstill👻" <manuel.pfannerstill@ethereal.email>',
         to: 'baz@example.com',
         subject: 'Hello from PCRepair✔',
         text: 'You have a submission from... Name: ' + req.body.name + ' Email: ' + req.body.email + ' Message: ' + req.body.message,

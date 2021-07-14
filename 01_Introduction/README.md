@@ -9,7 +9,7 @@
 - Top framework for working with Node.js.
 
 - More on top Node.js frameworks [here](https://www.simform.com/best-nodejs-frameworks/)
-- NodeJS Knowledge base for more on callbacks, securing code, callback convention etc. https://nodejs.org/en/knowledge/
+- NodeJS Knowledge base for more on callbacks, securing code, callback convention etc [here](https://nodejs.org/en/knowledge/)
 
 ## What is covered ?
 

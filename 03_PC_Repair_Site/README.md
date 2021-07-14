@@ -7,7 +7,9 @@
 - In this project we use Express Generator, which will generate an express boilerplate application. We will also work with **Pug/Jade** which is a Node.js Template Engine.
 
 ### What is a template engine ?
+
 - Template engine enables us to use static template files in our app. Variables in templates are replaced at runtime. Most template engines allow variables, conditionals and loops.
+
 - Some of the popular engines include Pug/Jade, EJS, Handlebars and Mustache.
 
 ### Implementing a Template Engine
@@ -16,13 +18,14 @@
 
 ```js
 // app.js
-app.set('views',path.join(__dirname,'views')); // Tell the system where the views folder will be.
-app.set('view engine','pug'); // Setting the engine, in our case pug
+app.set("views", path.join(__dirname, "views")); // Tell the system where the views folder will be.
+app.set("view engine", "pug"); // Setting the engine, in our case pug
 ```
+
 <!-- In Route to render template -->
 
 ```js
-res.render('index',{title:'Express'}); // Passing in the variable title with String express.
+res.render("index", { title: "Express" }); // Passing in the variable title with String express.
 ```
 
 ### Pug/Jade
@@ -99,22 +102,22 @@ nav.navbar.navbar-inverse.navbar-fixed-top
 - Create the form in contact.pug using pug templating and after that we install nodemailer.
 - Go to ethereal.email for fake email to test your nodemailer install.
 - Go to contact.js and add in the config for nodemailer. Define a route for post requests using router.post in contact.js.
-![](https://i.imgur.com/eKIQUN0.png)
+  ![](https://i.imgur.com/eKIQUN0.png)
 
 ## Screenshots depicting contact form in action:
 
->## Enter the data on site's contact form:
+> ## Enter the data on site's contact form:
 
 ![](https://i.imgur.com/skvnGFs.png)
 
->## Message sent notification in console and redirect to homepage.
+> ## Message sent notification in console and redirect to homepage.
 
 ![](https://i.imgur.com/pxA25Qz.png)
 
->## Multiple Emails Sent During Testing
+> ## Multiple Emails Sent During Testing
 
 ![](https://i.imgur.com/zsgeW6Z.png)
 
->## Screenshot of Email showing req.body.param working properly
+> ## Screenshot of Email showing req.body.param working properly
 
 ![](https://i.imgur.com/ZzKVGrE.png)

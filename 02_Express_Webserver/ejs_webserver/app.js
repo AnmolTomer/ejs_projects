@@ -1,11 +1,12 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+/* app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false })); */
 
 // Set static path
 
@@ -40,6 +41,7 @@ app.get("/stadiums", (req, res) => {
 
 app.get("/download", (req, res) => {
   res.download(path.join(__dirname, "/downloads/pdf.pdf"));
+  console.log("Downloaded File. ⚡✅🧾");
 });
 
 // To redirect the user to index.html when localhost:3000/index is entered.
