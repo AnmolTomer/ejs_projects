@@ -9,23 +9,27 @@
 - Top framework for working with Node.js.
 
 - More on top Node.js frameworks [here](https://www.simform.com/best-nodejs-frameworks/)
+- NodeJS Knowledge base for more on callbacks, securing code, callback convention etc. https://nodejs.org/en/knowledge/
 
 ## What is covered ?
 
 - All the fundamentals of Node.js and Express framework and 12 projects/web applications using Express and lots of other in demand technologies.
 
 ## Pre-requisites
+
 - HTML
 - CSS
 - JavaScript
 - Basic programming concepts: Variables, loops, functions,objects,arrays etc.
 
 ## Not Needed but will help
+
 - NoSQL Database
 - Model View Controller (MVC) Design Pattern
 - Node.js
 
 ## Featured Technologies
+
 ✅ HTML/CSS/JS/jQuery <br />
 ✅ FrontEnd Frameworks: Bootstrap/Foundation<br />
 ✅ **MongoDB** with ORM: Mongo Driver,Mongoose, MongoJS<br />

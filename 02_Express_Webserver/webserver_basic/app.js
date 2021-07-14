@@ -20,3 +20,5 @@ server.listen(port, hostname, () => {
 /*
 This is in contrast to today's more common concurrency model, in which OS threads are employed. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node.js are free from worries of dead-locking the process, since there are no locks. Almost no function in Node.js directly performs I/O, so the process never blocks. Because nothing blocks, scalable systems are very reasonable to develop in Node.js. Blocking v/s Non-Blocking : https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/
 */
+
+// NodeJS Knowledge base for more on callbacks, securing code, callback convention etc. https://nodejs.org/en/knowledge/
