@@ -14,7 +14,7 @@ app.get("/about", (req, res) => {
     console.log("User on about page.");
 });
 
-// To send parameters we do :param_name
+// To send parameters we do :param_name in path and then req.params.param_name to get access to that variable
 app.get("/users/:name", (req, res) => {
     let name = req.params.name;
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1)

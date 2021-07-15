@@ -16,7 +16,9 @@
 ## 02_02 What is Express ?
 
 - Express is a web framework for Node.js. Node.js is a JavaScript run-time for creating powerful applications and Express is a framework which comes in form on NodeJS module, which can be installed using Node Package Manager (NPM).
+
 - Express provides robust set of features for web and mobile applications. Allows us to easily create routes, access to HTTP utilities for creating middleware so that we can easily create extensive APIs.
+
 - **Routing**: Refers to defining application end points, and are used to handle how different end-points respond to client requests.
 
 ```js
@@ -46,6 +48,7 @@ app.post("/", function (req, res) {
 
 ```js
 npm install express // Puts in node modules folder
+
 // To save in package.json manifest file
 npm install express --save
 ```
@@ -53,7 +56,9 @@ npm install express --save
 ## 02_03 Setting up Environment
 
 - Download NodeJS from [here](https://nodejs.org/en/download/)
+
 - Git from [here](https://git-scm.com) to use Git Bash or use Windows Terminal. Be sure to check `Use Git and optional Unix tools like ls and mkdir while installing on Windows.`
+
 - Text Editor, Visual Studio Code (VSCode) from [here](https://code.visualstudio.com/download)
 
 ## 02_04 Very Basic Server Without Express
@@ -65,6 +70,7 @@ npm install express --save
 
 - Create new file, in our case as entry point is `app.js`, so we will create that.
 - After creating `app.js`, go to terminal and enter `node app.js` and you will see the output of code in app.js. Go [here](https://nodejs.org/about/) to get the snippet to create a bare minimum server.
+
 - Go to `127.0.01:3000` or `localhost:3000` to see the server in action.
 
 ## 02_05 Express Setup and Basic Routes
@@ -112,13 +118,25 @@ Server started on port 3000...
 ## 02_07 Serving JSON Downloads Handling POST
 
 - Ref: `app.get('/stadiums')` in `app.js`.
+
 - Now we see how to serve JSON content, which is used in making a RESTful API.
+
 - To serve or allow users to download pdf files, create a folder called downloads in `ejs_webserver` directory and we place in it an empty `pdf.pdf` file. Next, we create a route for user in app.js. Ref: `app.get('/download')` in `app.js`.
+
 - Post request to get user entered data. We make a form in `index.html`. And `app.post('/subscribe')` in `app.js`.
+
 - As we do not have a database, we will grab the name and the email field and to do that we have to install a module called `body-parser`, so we run `npm install body-parser --save`.
+
+- `npm install -g nodemon` to install node monitor that watches your js files and on detecting changes restarts the server. We download the bootstrap in .zip and move css, fonts, and js dir to static dir as well.
 
 ## Finished App:
 
 ![](https://i.imgur.com/VYFpjUN.png)
 
 ![](https://i.imgur.com/rwbkVAl.png)
+
+## Resources:
+
+- [Blocking v/s Non-Blocking](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/)
+
+- [Node Knowledge Base](https://nodejs.org/en/knowledge/) has more on callback convention, securing code and other best practices.

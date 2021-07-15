@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false })); */
 
 // Set static path
 
-app.use(express.static(path.join(__dirname, "static")));
 // Specify certain folder as static for express to use. Here we use __dirname to specify that in the same directory this app.js is use the folder called public.
+app.use(express.static(path.join(__dirname, "static")));
 
 app.get("/stadiums", (req, res) => {
   let stadium = [
@@ -64,6 +64,7 @@ app.get("/about", (req, res) => {
 // Post request to get user entered data.
 
 app.post("/subscribe", (req, res) => {
+  // coming from name field in the form on index.html page
   let name = req.body.name;
   let email = req.body.email;
   console.log(
