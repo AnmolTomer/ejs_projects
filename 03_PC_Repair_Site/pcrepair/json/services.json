@@ -1,22 +1,27 @@
 [{
-        "name": "Hardware Repair",
+        "name": "Hardware Repair ⚙🛠",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente veritatis rerum perspiciatis commodi molestiae enim, ab ipsum, nobis doloribus tempore quaerat saepe officiis asperiores expedita amet quasi dolorum magni voluptatibus!",
         "price_range": "$100 - $200"
     },
 
     {
-        "name": "Virus Removal",
+        "name": "Virus Removal ⚠🦠",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente veritatis rerum perspiciatis commodi molestiae enim, ab ipsum, nobis doloribus tempore quaerat saepe officiis asperiores expedita amet quasi dolorum magni voluptatibus!",
         "price_range": "$100 - $150"
     },
     {
-        "name": "PC Tune Up",
+        "name": "PC Tune Up⚡🚀🚀",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente veritatis rerum perspiciatis commodi molestiae enim, ab ipsum, nobis doloribus tempore quaerat saepe officiis asperiores expedita amet quasi dolorum magni voluptatibus!",
         "price_range": "$75 - $100"
     },
     {
-        "name": "Network Services",
+        "name": "Network Services📶",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente veritatis rerum perspiciatis commodi molestiae enim, ab ipsum, nobis doloribus tempore quaerat saepe officiis asperiores expedita amet quasi dolorum magni voluptatibus!",
         "price_range": "$500 - $1000"
+    },
+    {
+        "name": "Change/Re-install OS 🌐💠",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente veritatis rerum perspiciatis commodi molestiae enim, ab ipsum, nobis doloribus tempore quaerat saepe officiis asperiores expedita amet quasi dolorum magni voluptatibus!",
+        "price_range": "$100 - $300"
     }
 ]

@@ -38,10 +38,15 @@ res.render("index", { title: "Express" }); // Passing in the variable title with
 
 ## 03_02 Express Generator File Structure
 
-- This will generate an application, a package.json manifest file, app.js file, routes and other basic things required to get started. Basically a boiler plate. To install run `npm install express -g && npm install express-generator -g`.
+- This will generate an application, a package.json manifest file, app.js file, routes and other basic things required to get started. Basically a boiler plate. To install run `npm install express -g && npm install express-generator -g`. More on express generator [here](https://expressjs.com/en/starter/generator.html)
+
 - Now inside pcrepair we have to run `npm install` as it reads the dependencies from manifest file and install them.
+
 - Inside views folder we have `layout.pug`, this is where we will put all the code that we want to be present on other pages as well by calling extends layout.
-- `express pcrepair --view=pug` to create a starter template with pug as view engine.
+
+- `express pcrepair --view=pug` to create a starter template with pug as view engine, instead of default i.e. jade.
+
+- In [package.json](pcrepair/package.json) inside pcrepair dir we have `"start" : "node ./bin/www"` this gives us alternate ways to start our applications, other than doing node app.js. We can do npm start to start the pcrepair application. If we go to `localhost:3000` we can see the landing page with Express as default.
 
 ```pug
 doctype html
@@ -90,19 +95,28 @@ nav.navbar.navbar-inverse.navbar-fixed-top
 ## 03_04 About Services - Pulling JSON Data
 
 - For services we will fetch data from a JSON document and we will put all the services inside JSON and how we can grab it and put it into a template.
+
 - Start with about, create about.js in routes folder. Copy the basic structure from index.js but change the title and in app.js add path for about.
+
 - After that go to views directory and create about.pug.
-- Create a fodler in root and name it json. Create a file inside json directory services.json
+
+- Create a folder in root and name it json. Create a file inside json directory services.json
+
 - We are done with Home,About and Services page, next up we will make Contact page using node module Nodemailer.Nodemailer is a module for Node.js applications to allow easy as cake email sending.
 
 ## 03_05 Contact - Nodemailer Contact Form
 
 - Create routes/contact.js. Copy everything from index.js as starter and edit it out.
+
 - Add routes in app.js.
+
 - Create the form in contact.pug using pug templating and after that we install nodemailer.
+
 - Go to ethereal.email for fake email to test your nodemailer install.
+
 - Go to contact.js and add in the config for nodemailer. Define a route for post requests using router.post in contact.js.
-  ![](https://i.imgur.com/eKIQUN0.png)
+
+![](https://i.imgur.com/eKIQUN0.png)
 
 ## Screenshots depicting contact form in action:
 
