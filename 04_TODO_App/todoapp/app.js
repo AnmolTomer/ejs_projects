@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser'); replace bodyparser.json() with express.json() and same for urlencoded()
 // Port
 const port = 5000;
 
@@ -8,19 +8,22 @@ const port = 5000;
 const app = express();
 const assert = require('assert')
 
+// Create var for db location, 27017 is default port for MongoDB
 const MongoClient = require('mongodb', ).MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const url = 'mongodb://localhost:27017';
 const dbName = 'todoapp'
 
-// Body Parser Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+// Body Parser rather Express Middleware
+app.use(express.json());
+app.use(express.urlencoded({
     extended: false
 }));
+
+// Specify public as static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// View Setup
+// View Setup - Views to be loaded from views dir and we use ejs as view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -34,7 +37,7 @@ MongoClient.connect(url, {
         console.error(err)
         return
     }
-    console.log("Connected successfully to server on url " + url);
+    console.log(`Connected successfully to server on url ${url} 🌐✅`);
     const db = client.db('todoapp')
     Todos = db.collection("todos");
     app.listen(port, '0.0.0.0', () => {
@@ -44,7 +47,8 @@ MongoClient.connect(url, {
 })
 
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res, next) => {+
+    // Fetch the todos from the Todos database as an array
     Todos.find({}).toArray((err, todos) => {
         if (err) {
             return console.log(err);
@@ -54,6 +58,7 @@ app.get('/', (req, res, next) => {
         console.log(todos);
         console.log('- - - - - - - - - - - - - - - - - - - \n')
         res.render('index', {
+            // send todos received to index
             todos: todos
         });
     });
@@ -61,7 +66,7 @@ app.get('/', (req, res, next) => {
 
 app.post('/todo/add', (req, res, next) => {
     // console.log('submitted') // To test if route is working
-    // Create todo object
+    // Create todo object, get value from form
     const todo = {
         text: req.body.title,
         body: req.body.info,

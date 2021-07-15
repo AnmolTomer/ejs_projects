@@ -1,10 +1,10 @@
 # 04 To-Do App using MongoDB
 
->## Demo
+> ## Demo
 
 ![](demo.gif)
 
->## Mobile View Demo
+> ## Mobile View Demo
 
 ![](mobile_demo.gif)
 
@@ -17,21 +17,30 @@
 ## Project Topics:
 
 - Getting Started with MongoDB
-- MongoDB Driver
+- We will use MongoDB Driver. Other popular way of interacting with MongoDB is through Mongoose and Mongojs.
 - CRUD Functionality
 - Form Processing and Uploading to DB
-- EJS Template Engine
+- EJS, Embedded JS Template Engine
+
+---
 
 ## 04_02 MongoDB Advantages
 
->## What is MongoDB ?
-- A NoSQL (Not only SQL) database, it's a non-relational database.
-- Document Database: It stores data inside of documents, MongoDB doesn't use rows and tables like relational databases, instead uses collections of documents. And these documents are basically formatted like JSON objects. If you understand JSON and how that is structured in terms of objects and arrays of objects then you already understand how MongoDB stores data to a large extent.
+> ## What is MongoDB ?
 
->## Advantags of NoSQL
-- **Schemeless (Partially)**: Doesn't need pre-defined set of rules for data, we can create these as we go. Allows for things like a blog post with tags in it, and another blog post with no tags. Much less strict when compared to SQL DBs.
-- **Scalable**: (Scale Out), MongoDB is much more scalable than a relational DB, what this means is total amount of disc space can be expanded as needed.
-- Runs on Cheap Hardware, thus better to maintain and manage.
+- A NoSQL (Not only SQL) database, it's a non-relational database. It's possible to use SQL within No-SQL databases. Term that makes more sense in non-relational.
+
+- Document Database: It stores data inside of documents, one of the types of NoSQL databases. You can read about other kinds of NoSQL datatypes [here](https://github.com/AnmolTomer/fullstack_webdev/tree/master/09_NoSQL_Essential_Training#2-different-types-of-nosql-databases). MongoDB doesn't use rows and tables like relational databases, instead uses collections of documents. And these documents are basically formatted like JSON objects. If you understand JSON and how that is structured in terms of objects and arrays of objects then you already understand how MongoDB stores data to a large extent.
+
+> ## Advantags of NoSQL
+
+- **Schemaless (Partially)**: Doesn't need pre-defined set of rules for data, we can create these as we go. Allows for things like a blog post with tags in it, and another blog post with no tags. Much less strict when compared to SQL DBs.
+
+- **Scalable**: (Scale Out), MongoDB is much more scalable than a relational DB, what this means is total amount of disc space can be expanded as needed. When the drives are stored in different storage arrays, when a storage array reaches its max, another one will pick up where the last drive left, this makes scaling easier and much less expensive. Relational DBs have scale up method, we need to add more CPUs and Memory that can get really expensive, real quick.
+
+- Runs on Cheap Hardware, thus better to maintain and manage. We can add simple cost effective service machines, we don't have to upgrade CPU and memory to scale. So much cheaper to manage and run NoSQL DBs.
+
+- Example of a MongoDB Simple Document
 
 ```json
 user: {
@@ -46,52 +55,70 @@ user: {
     }
 }
 ```
->## Common MongoDB Syntax
 
-<!-- To create collection -->
-- `db.createCollection('users')`
+> ## Common MongoDB Syntax
 
-<!-- We can call different methods on the collection such as following: -->
+- To create collection
 
-- `db.users.insert({name:'John Doe',email:'jdoe@xyz.com'})`
+> `db.createCollection('users')`
 
-- `db.users.find()`
+- We can call different methods on the collection such as following:
 
-- `db.users.update({_id:1},{$set:{name:'Bob'}})`
+> `db.users.insert({name:'John Doe',email:'jdoe@xyz.com'})`
 
-- `db.users.remove({_id:1})`
+- Find, update or remove users
+
+```mongo
+db.users.find()
+
+db.users.update({_id:1},{$set:{name:'Bob'}})
+
+db.users.remove({_id:1})
+```
 
 ## MongoDB Driver
 
 - We use basic MongoDB driver that provides interaction with MongoDB.
 - Interaction through callbacks and promises. Can take advantages of the new ES6 features.
 
-## Installation:
-`npm install mongodb --save`
+- Installation: `npm install mongodb --save`
 
-## Connecting to MongoDB
+## Connecting to MongoDB using DB Driver
 
 ```js
-var MongoClient = require('mongodb').MongoClient
+var MongoClient = require("mongodb").MongoClient;
 
-var url = 'mongodb://localhost:27017/myproject';
-MongoClient.connect(url,(err,db) => {
-    console.log("Connected successfully to server");
+var url = "mongodb://localhost:27017/myproject"; // url can be stored in an env variable during deploy
+MongoClient.connect(url, (err, db) => {
+  // pass the url to MongoClient, callback with err and db instance
+  if (err) {
+    throw err;
+  }
+  console.log("Connected successfully to server");
 });
 ```
 
 - Example of finding documents using a function:
 
 ```js
-var findDocuments = (db,callback) => {
-    var collection = db.collection('documents');
-    collection.find({}).toArray((err,docs) => {
-        console.log("Found the following records: ");
-        console.log(docs);
-        callback(docs);
-    });
-}
+var findDocuments = (db, callback) => {
+  var collection = db.collection("collectionName");
+
+  // call .find() on the collection, toArray to get response as an array, docs passed in that we can use and pass it to a template
+  collection.find({}).toArray((err, docs) => {
+    if (err) {
+      throw err;
+    }
+    console.log("Found the following records: ");
+
+    console.log(docs);
+
+    callback(docs);
+  });
+};
 ```
+
+---
 
 ## 04_03 MongoDB Installation :
 
@@ -99,11 +126,15 @@ var findDocuments = (db,callback) => {
 
 - To install MongoDB: `sudo apt install -y mongodb`
 
-- To check MongoDB Status: `sudo systemctl status mongodb`: 
+- To check MongoDB Status: `sudo systemctl status mongodb`:
 
 - To define database and log file path: `mongod --directoryperdb --dbpath ~/software/mongodb/data/db --logpath ~/software/mongodb/log/mongo.log`
 
 - To go to Mongo Shell: `mongo`
+
+- Show databases using `show dbs`, create DB using `use DB_name`, create collection using `db.createCollection('collectionName')` after switching to db, to insert into a collection we do `db.collectionName.insert({name: 'Value', key2:'Value'})`, to show what's in a collection do `db.collectionName.find()`.
+
+- [Free Monitoring Link](https://cloud.mongodb.com/freemonitoring/cluster/YTRUH2DZPY45XZ4CZQKQDIO7JMU5QQYL)
 
 ![](https://i.imgur.com/nqfyyBw.png)
 
@@ -113,12 +144,17 @@ var findDocuments = (db,callback) => {
 
 - We won't be using mongo shell that often, MongoDB driver for node or mongoose is what we will be using in our projects and drivers create the DBs on the fly on its own, so we do not have to pre-format anything or stick to some syntax.
 
+---
+
 ## 04_04 App setup EJS
 
 - Create a directory `todoapp`. >> `npm init` to create package.json file. >> `npm install mongodb ejs express body-parser --save`
+
 - Go to app.js and change import modules as required.
+
 - With EJS we do not have a layout as we had with Pug, it uses something called partials. We create partial to avoid repetition of code. Create a new folder inside views called `partials` and inside partials we create `header.ejs` and `footer.ejs`.
-- Insert in index.ejs following to include paritals header.ejd and footer.ejs in the file index.ejs:
+
+- Insert in index.ejs following to include paritals header.ejs and footer.ejs in the file index.ejs:
 
 ```js
 <%- include ("../views/partials/header") %>
@@ -126,9 +162,11 @@ HELLO FROM INDEX
 <%- include ("../views/partials/footer") %>
 ```
 
+---
+
 ## 04_05 MongoDB Driver Fetching Todos
 
->## MongoDB Driver
+> ## MongoDB Driver
 
 - Ref: **app.js**
 
@@ -137,16 +175,16 @@ HELLO FROM INDEX
 - Connect the DB with frontend and log the db entries into the console, inside the app.get route for home page in following manner:
 
 ```js
-app.get('/', (req, res, next) => {
-    Todos.find({}).toArray((err, todos) => {
-        if (err) {
-            return console.log(err);
-        }
-        console.log(todos);
-        res.render('index', {
-            todos: todos
-        });
+app.get("/", (req, res, next) => {
+  Todos.find({}).toArray((err, todos) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(todos);
+    res.render("index", {
+      todos: todos,
     });
+  });
 });
 ```
 
@@ -156,8 +194,11 @@ app.get('/', (req, res, next) => {
 
 - Go to index.ejs to create a form so that we can add data to MongoDB.
 - If you restarted your system and you are getting errors while running mongo shell, do the following:
+
   - Delete mongo.log or rename it, in my case it was at `/home/cosmic/software/mongodb/log/mongo.log`, I renamed it to `mongo2.log`.
+
   - Run the mongod as sudo by passing directory and log file paths in following manner: `sudo mongod --directoryperdb --dbpath ~/software/mongodb/data/db --logpath ~/software/mongodb/log/mongo.log`
+
   - Create new db, as in my case old entries were deleted.
 
 ```bash
@@ -175,14 +216,22 @@ db.todos.insert({text:'My Todo Two',body:'This is second todo.'})
 ![](https://i.imgur.com/2Bkyz8h.png)
 
 - Create a form in index.ejs and since forms have a post request, add it in app.js.
+
 - Think of what to do when you submit data from form, we want to user body-parser module to get parameters body.form.title and body.form.info and add those as an object into the database.
+
 - We will also have to delete our todos. And this will be different to just getting something from a post request path and adding as an object to DB.
+
 - We will have to accept a deleting request and we cannot do a delete request through a form like we did for add task.
+
 - We will use jQuery and AJAX to make a delete request.
+
 - We will have to go to index.ejs and add a delete link next to each todo. Inside the public folder, create a folder called `js` and create `main.js` in there. Add this file in the footer partials.
+
 - We will use jQuery and we will also be using Bootstrap. To install bootstrap we will be using `Bower`, which is a frontend or client-side package manager. When we install bootstrap with bower it also installs jQuery as jQuery is a dependency.
+
 - First we install bower and then using bower we install bootstrap.
-- We can create a file called `.bowerrc` to specify what folder to use for bower components. Ref: `.bowerrc`
+
+- We can create a file called `.bowerrc` to specify what folder to use for bower components otherwise it would store components in root dir, we don't want that. Ref: `.bowerrc`
 
 ```bash
 npm install -g bower
@@ -190,11 +239,11 @@ bower install bootstrap
 bower install jquery
 ```
 
-- Go back to footer.ejs and include jquery.
+- Go back to [footer.ejs](./todoapp/views/partials/footer.ejs) and include jquery.
+
 - Go to package.json and add static script `"start": "node app"`, this would allow you to run the server by typing `npm start`, because sometimes it would be node app, node server,node main etc. etc. so we define it inside the package.json itself, so that it would run on npm start irrespective of what our main entry-point file's name is.
 
 - Add the delete route after taking in the id of the object to be removed.
-
 
 ## Update Todos
 
