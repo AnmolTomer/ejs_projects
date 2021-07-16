@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    .container
+        h1 #{article.title}
+        h4.post-subtitle #{article.subtitle}
+        p.post-meta
+            | Posted by #{article.author}
+            | on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+            hr
+        p.post-body
+        |  #{article.body}
+        hr
+        h4 Comments 🎙️🎙️
+        hr
+        each comment,i in article.comments
+            div.well
+                h5 Author: #{comment.comment_author}
+                //- P on #{moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                P Comment: #{comment.comment_body}
+                hr
+        h4 Add Comments 💬️💬️
+        p
+            form.comment-form(method='post',action='/articles/comments/add/'+article._id)
+                .form-group
+                    label Subject
+                    input.form-control(type='text',name='comment_subject',required)
+                .form-group
+                    label Name
+                    input.form-control(type='text',name='comment_author',required)
+                .form-group
+                    label Email
+                    input.form-control(type='email',name='comment_email',required)
+                .form-group
+                    label Comment
+                    textarea.form-control(name='comment_body',required,rows=4)
+                input.btn.btn-success(name='submit',type='submit',value="Add Comment💬️💬️",class="mr-3")
+                a.btn.btn-dark(href='/articles') Back ⏪️
+

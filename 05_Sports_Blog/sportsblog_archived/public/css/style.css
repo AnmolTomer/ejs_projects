@@ -1,14 +1,6 @@
-.btn-space {
-    margin: 15px 10px;
-}
-
 .create-btn {
     margin-top: 15px;
     margin-bottom: 20px;
-}
-
-input[type=text], .txtarea, .form-group, label{
-    margin-bottom: 15px;
 }
 
 #messages {

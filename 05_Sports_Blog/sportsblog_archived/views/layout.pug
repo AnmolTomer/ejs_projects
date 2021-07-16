@@ -1,21 +1,21 @@
 doctype html
-
 html
     head
         title SportsBlog
         link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet", href="/css/style.css")
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     body
+        //- include ./navbar.html
+        include ./includes/navbar.pug
+        
         block content
         hr
         footer
             .container
-                strong
-                    Copyright &copy; 2021, SportsBlog
+                Copyright &copy; 2020, SportsBlog
 
         script(src='/bower_components/jquery/dist/jquery.js')
         script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
         script(src='/js/main.js')
-    

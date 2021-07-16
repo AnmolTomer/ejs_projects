@@ -1,15 +1,12 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
 
-router.get('/', (req, res, next) => {
-    Article.getArticles((err, articles) => {
-        res.render('index', {
-            title: 'Index',
-            articles: articles
-        })
+const router= express.Router();
 
-    }, 4)
-
+router.get('/', (req,res,next) => {
+    res.render('index',{title: 'INDEX'})
+    console.log('-----------------------\n')
+    console.log('User is on Home 🏠🏡')
+    console.log('-----------------------\n')
 })
 
-module.exports = router
+module.exports = router;

@@ -29,9 +29,9 @@ block content
                 textarea.form-control(name='body',rows=8,required) #{article.body}
                         
                     
-            input.btn.btn-space.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
-            a.btn.btn-space.btn-dark(href='/manage/articles') Back ↩
-            a.btn.btn-space.btn-danger.article-delete.float-end(href='/manage/articles', data-article-id=article._id) Delete 🗑
+            input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
+            a.btn.btn-dark(href='/manage/articles') Back⏪️
+            a.btn.btn-danger.article-delete.float-right(href='/manage/articles', data-article-id=article._id) Delete
             //- a.btn.btn-danger.category-delete.float-right(href='/manage/articles', data-cat-id=category._id) Delete
 
 

@@ -3,18 +3,24 @@ extends layout
 block content
     .container 
         h1 #{title }
+
+        if errors
+            each error,i in errors
+                li.alert.alert-warning.alert-dismissible.fade.show(role='alert') 
+                    strong #{error.msg}
+                //- span(aria-hidden='true') &times;
+
         form(method="post", action="/categories/add")
             .form-group
                 label Title:
-                input.form-control(name='title',type='text',required)
-                //- input.form-control(name='title',type='text',required)
+                input.form-control(name='title',type='text')
 
             .form-group
                 label Description:
-                textarea.form-control(name='description')
+                textarea.form-control(name='description',type='text')
                 //- textarea.form-control(name='description')
-            input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
-            a.btn.btn-danger(href='/manage/categories') Back⏪️
+            input.btn.btn-primary.btn-space(type="submit",name="submit",class="mr-3", value="Save 💾️")
+            a.btn.btn-danger.btn-space(href='/manage/categories') Back ↩
 
-    //- Create route in categories.js for /categories/add
+    //- Create post route in categories.js for /categories/add
 

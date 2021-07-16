@@ -1,4 +1,3 @@
-// Delete categoriy from route manage/categories/edit/:id
 $(document).ready(() => {
     $('.category-delete').on('click', (e) => { // Class of delete category on the event click call AJAX
         $target = $(e.target)
@@ -10,12 +9,12 @@ $(document).ready(() => {
                 window.location.href = '/manage/categories'
             },
             error: (error) => { // if error in that case print error
-                console.log(error)
+                console.error(error)
             }
         })
     })
+    // Delete article from route /articles/edit/:id
 
-    // Delete article from route manage/articles/edit/:id
     $('.article-delete').on('click', (e) => { // Class of delete category on the event click call AJAX
         $target = $(e.target)
         $.ajax({

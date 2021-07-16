@@ -3,22 +3,43 @@ const mongoose = require('mongoose')
 // Article Schema - Title, Subtitle, Category, Body, Author, Created_At
 
 const articleSchema = mongoose.Schema({
-    title: {type: String},
-    subtitle: { type: String },
-    category: {type: String},
-    body: {type: String},
-    author: {type: String},
-    created_at: {type: Date,default: Date.now},
-
-    comments: [
-        {
-            comment_subject: {type: String},
-            comment_body: {type: String},
-            comment_author: {type: String},
-            comment_email: {type: String},
-            comment_date: {type: String}
+    title: {
+        type: String
+    },
+    subtitle: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    body: {
+        type: String
+    },
+    author: {
+        type: String
+    },
+    created_at: {
+        type: Date,
+        default: Date.now,
+    },
+    comments: [{
+        comment_subject: {
+            type: String
+        },
+        comment_body: {
+            type: String
+        },
+        comment_author: {
+            type: String
+        },
+        comment_email: {
+            type: String
+        },
+        comment_date: {
+            type: String
         }
-    ]
+
+    }]
 })
 
 
@@ -36,6 +57,7 @@ module.exports.getArticles = function (callback, limit) {
 }
 
 // Add Article
+
 module.exports.addArticle = function (article, callback) {
     Article.create(article, callback)
 }
@@ -43,7 +65,9 @@ module.exports.addArticle = function (article, callback) {
 // Get Article By Category
 
 module.exports.getCategoryArticles = function (categoryId, callback) {
-    let query = {category: categoryId}
+    let query = {
+        category: categoryId
+    }
     Article.find(query, callback).sort([
         ['title', 'ascending']
     ])
@@ -62,11 +86,13 @@ module.exports.updateArticle = function (query, update, options, callback) {
 }
 
 // Remove article
+
 module.exports.removeArticle = function (query, callback) {
     Article.deleteOne(query, callback)
 }
 
 // Create Method for Comment
+
 module.exports.addComment = function (query, comment, callback) {
     Article.updateOne(query, {
         $push: {

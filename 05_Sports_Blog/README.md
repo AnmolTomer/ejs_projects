@@ -1,24 +1,29 @@
 # Sports Blog
 
->## Sports Blog Demo - Web View
+> ## Sports Blog Demo - Web View
 
 ![](demo.gif)
 
-
->## Mobile View
+> ## Mobile View
 
 ![](mobile.gif)
-
 
 ## 05_01 Project Intro
 
 - We will create a Sports Blog with full CRUD functionality. We will use mongoose this time around. It is another method of connecting to MongoDB, and is more advanced than standard MongoDB driver which we used in last project of TODO App. It's more efficient, advanced and sort of more intuitive to connect to NoSQL DB.
+
 - Functionality also includes visitors being able to post comments on every blog post.
+
 - We have category sort available as well on blog. Where users can sort as per their choice.
+
 - Admin features such as being able to add and remove categories along with notification messages whenever there is some edit done.
+
 - Same functionality available to manage articles also available.
+
 - Use of data and time formatter to present Data, Time in a more clean manner.
+
 - Form validation as well.
+
 - Run MongoDB in docker using `sudo docker run -d -p 27017:27017 -v ~/data:/data/db mongo`, visit [this](https://www.thachmai.info/2015/04/30/running-mongodb-container/) for detailed info.
 
 - Or you can do this to remove related to mongoDB if you have any, I'd recommend Docker:
@@ -36,7 +41,7 @@ sudo apt install mongodb
 sudo service mongodb start
 mongo
 sudo service mongodb stop
- ```
+```
 
 ## Tools/Technologies Used
 
@@ -44,7 +49,7 @@ sudo service mongodb stop
 - Multiple Collections (articles and categories)
 - Express Messages & Validator, Sessions
 - Working with advanced Pug Layouts
-- Express Router
+- Express Router, with routes on separate files. We set up everything from scratch.
 
 ## 05_02 Mongoose ODM (Object Document Mapper)
 
@@ -52,13 +57,14 @@ sudo service mongodb stop
 - It is an elegant object modelling package for Node and allows us to easily create CRUD apps.
 - Mongoose also includes things like type casting, validation, query building, hooks, etc.
 - Mongoose uses models to represent documents that can be saved and fetched from the database.
-- Mongoose models must have a schema, which is used to define attributes for documents. 
+- Mongoose models must have a schema, which is used to define attributes for documents.
 - Methods can also be defined on mongoose schemas.
 - **Allowed Schema Types**: String, Number, Data, Buffer, Boolean, Mixed, ObjectID, Array.
 
 ## 05_03 App Middleware Setup
 
 - We will proceed in same manner as we did for **PC Repair** website such as using external routing files, Pug template engine, but this time we won't use express generator, rather we will set everything up from scratch and create our own app.js file as this gives us less limitations and more flexibility while setting up our project.
+
 - We have a lot more dependencies for this app. So instead of doing npm install --save, we will directly put all of our requirements in package.json file so that we can just run npm install and it will set it up everything in one go.
 
 - See the docs for express-messages and validator on these links: [Validator](https://express-validator.github.io/docs/), [messages](https://github.com/visionmedia/express-messages)
@@ -77,9 +83,11 @@ sudo service mongodb stop
 
 ## 05_05 Fetching Categories and Working with Mongoose
 
-- Create db and add categories using the following
+- Create db and add categories using the following, db.createCollection docs [here](https://docs.mongodb.com/manual/reference/method/db.createCollection/)
 
-```
+![](https://i.imgur.com/rV5Ek63.png)
+
+```sql
 use sportsblog
 db.createCollection('categories')
 db.createCollection('articles')
@@ -89,6 +97,7 @@ db.categories.insert({title:'Football','description':'These are Football article
 db.categories.insert({title:'Cricket','description':'These are Cricket articles.'})
 db.categories.find()
 ```
+
 - Now we have 4 categories in our DB, next want to fetch these categories using Mongoose. In Mongoose we deal with models, create a directory called models and inside it create a file called `category.js`. We try keeping everything encapsulated inside module.
 - To connect to mongoose, we go to app.js and define the required methods. After doing mongoose.connection go to `routes/categories.js` and bring up Category model. Now on visiting localhost:5000/categories you would see all the categories and description in the console. Next we want to take those categories and pass them into our template of categories page.
 - Next we work on implementing functionality for `/manage/categories/add` route using a form we would be able to add new categories.
@@ -149,7 +158,7 @@ db.categories.find()
 
 ## 05_10 Messages
 
-- To show a message we can see that in the route /manage/categories when we add something and do a res.redirect, before that we can send a flash message.  We can do so by entering the following `req.flash('Success', 'Added To Category')` after that we go to app.js and setup connect-flash and we use a variable globally called messages which we may use in our templates to show messages. So we should add the message in `/manage/categories/` route as that's where we will be redirected once we submit the request successfully. Make some changes to style.css and messages will work on your page.
+- To show a message we can see that in the route /manage/categories when we add something and do a res.redirect, before that we can send a flash message. We can do so by entering the following `req.flash('Success', 'Added To Category')` after that we go to app.js and setup connect-flash and we use a variable globally called messages which we may use in our templates to show messages. So we should add the message in `/manage/categories/` route as that's where we will be redirected once we submit the request successfully. Make some changes to style.css and messages will work on your page.
 - On adding articles also we want the same effect, so we go to articles.js and before the redirect request we do the same as we did for categories.
 - With messages showing up on Add and Edit for category and articles we are done with admin side or things related to controlling the content on the site.
 

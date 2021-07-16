@@ -3,16 +3,18 @@ extends layout
 block content
     .container 
         h1 #{title }
-        form(method="post", action='/categories/edit/'+category._id)
+        form(method="post", action=`/categories/edit/${category._id}`)
             .form-group
                 label Title:
                 input.form-control(name='title',type='text', value=category.title)
+                //- input.form-control(name='title',type='text',required)
 
             .form-group
                 label Description:
                 textarea.form-control(name='description') #{category.description}
-            input.btn.btn-primary(type="submit",name="submit",class="mr-3", value="Save💾️")
-            a.btn.btn-dark(href='/manage/categories') Back⏪️
-            a.btn.btn-danger.category-delete.float-right(href='/manage/categories', data-cat-id=category._id) Delete
-            //- Add a class to make a delete request through jQuery and AJAX
-            
+            input.btn.btn-space.btn-primary(type="submit",name="submit",class="mr-3", value="Save 💾️")
+            a.btn.btn-space.btn-dark(href='/manage/categories') Back ↩
+            a.btn.btn-space.btn-danger.category-delete.float-end(href='/manage/categories', data-cat-id=category._id) Delete 🗑
+
+    //- Create post route in categories.js for /categories/add
+

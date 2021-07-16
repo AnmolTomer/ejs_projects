@@ -1,15 +1,4 @@
 extends layout
 
 block content
-    .container
-        h1 #{title }
-        .row
-            .col-md-12
-                each article,i in articles
-                    a(href='/articles/show/'+article._id)
-                        h2.post-title #{article.title}
-                        h4.post-subtitle #{article.subtitle}
-                    p.post-meta
-                        | Posted by #{article.author}
-                        | on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
-                        hr
+    h1 #{title}
